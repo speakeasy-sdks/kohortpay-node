@@ -20,7 +20,7 @@ features:
     methodSecurity: 2.82.0
 typescript:
   version: 0.1.0
-  author: Kohortpay
+  author: kohortpay
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
