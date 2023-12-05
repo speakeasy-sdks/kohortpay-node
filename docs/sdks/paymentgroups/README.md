@@ -3,16 +3,16 @@
 
 ### Available Operations
 
-* [paymentGroupsControllerFindAll](#paymentgroupscontrollerfindall) - Retrieve all payment groups
-* [paymentGroupsControllerCreate](#paymentgroupscontrollercreate) - Create a new payment group
-* [paymentGroupsControllerFindOne](#paymentgroupscontrollerfindone) - Retrieve a payment group by id
-* [paymentGroupsControllerUpdate](#paymentgroupscontrollerupdate) - Update a payment group by id
-* [paymentGroupsControllerParticipants](#paymentgroupscontrollerparticipants) - Retrieve participants of a payment group by id
-* [paymentGroupsControllerCancel](#paymentgroupscontrollercancel) - Cancel a payment group by id
-* [paymentGroupsControllerExpire](#paymentgroupscontrollerexpire) - Expire a payment group by id
-* [paymentGroupsControllerValidate](#paymentgroupscontrollervalidate) - Validate a payment group by id
+* [findAll](#findall) - Retrieve all payment groups
+* [create](#create) - Create a new payment group
+* [findOne](#findone) - Retrieve a payment group by id
+* [update](#update) - Update a payment group by id
+* [getParticipants](#getparticipants) - Retrieve participants of a payment group by id
+* [cancel](#cancel) - Cancel a payment group by id
+* [expire](#expire) - Expire a payment group by id
+* [validatePaymentGroup](#validatepaymentgroup) - Validate a payment group by id
 
-## paymentGroupsControllerFindAll
+## findAll
 
 Retrieve all payment groups
 
@@ -26,7 +26,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerFindAll();
+  const res = await sdk.paymentGroups.findAll();
 
   if (res.statusCode == 200) {
     // handle response
@@ -45,14 +45,14 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerFindAllResponse](../../models/paymentgroupscontrollerfindallresponse.md)>**
+**Promise<[models.FindAllPaymentGroupsResponse](../../models/findallpaymentgroupsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerCreate
+## create
 
 Create a new payment group
 
@@ -66,11 +66,11 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerCreate({
+  const res = await sdk.paymentGroups.create({
     customerId: "cus_IzkjlvAhdjzjht3",
     paymentIntentId: "pi_1JYLo8KerLxWZaQtys6ZQ1xR",
     metadata: {},
-    expiresAt: new Date("2023-12-05T15:08:34.820Z"),
+    expiresAt: new Date("2023-12-05T23:49:12.816Z"),
   });
 
   if (res.statusCode == 200) {
@@ -91,21 +91,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerCreateResponse](../../models/paymentgroupscontrollercreateresponse.md)>**
+**Promise<[models.CreatePaymentGroupResponse](../../models/createpaymentgroupresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerFindOne
+## findOne
 
 Retrieve a payment group by id
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentGroupsControllerFindOneRequest } from "kohortpay-node";
+import { FindOnePaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -113,7 +113,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerFindOne(id);
+  const res = await sdk.paymentGroups.findOne(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -133,26 +133,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerFindOneResponse](../../models/paymentgroupscontrollerfindoneresponse.md)>**
+**Promise<[models.FindOnePaymentGroupResponse](../../models/findonepaymentgroupresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerUpdate
+## update
 
 Update a payment group by id
 
 ### Example Usage
 
 ```typescript
-import {
-  KohortPay,
-  PaymentGroupsControllerUpdateRequest,
-  UpdatePaymentGroupDto,
-  UpdatePaymentGroupDtoMetadata,
-} from "kohortpay-node";
+import { KohortPay, UpdatePaymentGroupDto, UpdatePaymentGroupDtoMetadata, UpdateRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -163,7 +158,7 @@ const updatePaymentGroupDto: UpdatePaymentGroupDto = {
   metadata: {},
 };
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerUpdate(id, updatePaymentGroupDto);
+  const res = await sdk.paymentGroups.update(id, updatePaymentGroupDto);
 
   if (res.statusCode == 200) {
     // handle response
@@ -184,21 +179,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerUpdateResponse](../../models/paymentgroupscontrollerupdateresponse.md)>**
+**Promise<[models.UpdateResponse](../../models/updateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerParticipants
+## getParticipants
 
 Retrieve participants of a payment group by id
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentGroupsControllerParticipantsRequest } from "kohortpay-node";
+import { GetParticipantsRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -206,7 +201,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerParticipants(id);
+  const res = await sdk.paymentGroups.getParticipants(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -226,21 +221,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerParticipantsResponse](../../models/paymentgroupscontrollerparticipantsresponse.md)>**
+**Promise<[models.GetParticipantsResponse](../../models/getparticipantsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerCancel
+## cancel
 
 Cancel a payment group by id
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentGroupsControllerCancelRequest } from "kohortpay-node";
+import { CancelPaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -248,7 +243,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerCancel(id);
+  const res = await sdk.paymentGroups.cancel(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -268,21 +263,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerCancelResponse](../../models/paymentgroupscontrollercancelresponse.md)>**
+**Promise<[models.CancelPaymentGroupResponse](../../models/cancelpaymentgroupresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerExpire
+## expire
 
 Expire a payment group by id
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentGroupsControllerExpireRequest } from "kohortpay-node";
+import { ExpirePaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -290,7 +285,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerExpire(id);
+  const res = await sdk.paymentGroups.expire(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -310,21 +305,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerExpireResponse](../../models/paymentgroupscontrollerexpireresponse.md)>**
+**Promise<[models.ExpirePaymentGroupResponse](../../models/expirepaymentgroupresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentGroupsControllerValidate
+## validatePaymentGroup
 
 Validate a payment group by id
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentGroupsControllerValidateRequest, ValidatePaymentGroupDto } from "kohortpay-node";
+import { KohortPay, ValidatePaymentGroupDto, ValidatePaymentGroupRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -335,7 +330,7 @@ const validatePaymentGroupDto: ValidatePaymentGroupDto = {
   customerEmail: "customer@gmail.com",
 };
 
-  const res = await sdk.paymentGroups.paymentGroupsControllerValidate(id, validatePaymentGroupDto);
+  const res = await sdk.paymentGroups.validatePaymentGroup(id, validatePaymentGroupDto);
 
   if (res.statusCode == 200) {
     // handle response
@@ -356,7 +351,7 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentGroupsControllerValidateResponse](../../models/paymentgroupscontrollervalidateresponse.md)>**
+**Promise<[models.ValidatePaymentGroupResponse](../../models/validatepaymentgroupresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

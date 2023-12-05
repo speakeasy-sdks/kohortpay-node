@@ -69,3 +69,13 @@ Based on:
 - [typescript v0.1.6] .
 ### Releases
 - [NPM v0.1.6] https://www.npmjs.com/package/kohortpay-node/v/0.1.6 - .
+
+## 2023-12-05 23:58:14
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.125.2 (2.210.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.1.7] .
+### Releases
+- [NPM v0.1.7] https://www.npmjs.com/package/kohortpay-node/v/0.1.7 - .

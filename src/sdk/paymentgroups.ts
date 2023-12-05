@@ -17,9 +17,7 @@ export class PaymentGroups {
     /**
      * Retrieve all payment groups
      */
-    async paymentGroupsControllerFindAll(
-        config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerFindAllResponse> {
+    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllPaymentGroupsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -54,12 +52,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerFindAllResponse =
-            new models.PaymentGroupsControllerFindAllResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindAllPaymentGroupsResponse = new models.FindAllPaymentGroupsResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case httpRes?.status == 200:
                 break;
@@ -78,10 +75,10 @@ export class PaymentGroups {
     /**
      * Create a new payment group
      */
-    async paymentGroupsControllerCreate(
+    async create(
         req: models.CreatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerCreateResponse> {
+    ): Promise<models.CreatePaymentGroupResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new models.CreatePaymentGroupDto(req);
         }
@@ -136,12 +133,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerCreateResponse =
-            new models.PaymentGroupsControllerCreateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CreatePaymentGroupResponse = new models.CreatePaymentGroupResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [201, 400].includes(httpRes?.status):
                 break;
@@ -160,11 +156,11 @@ export class PaymentGroups {
     /**
      * Retrieve a payment group by id
      */
-    async paymentGroupsControllerFindOne(
+    async findOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerFindOneResponse> {
-        const req = new models.PaymentGroupsControllerFindOneRequest({
+    ): Promise<models.FindOnePaymentGroupResponse> {
+        const req = new models.FindOnePaymentGroupRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -201,12 +197,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerFindOneResponse =
-            new models.PaymentGroupsControllerFindOneResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindOnePaymentGroupResponse = new models.FindOnePaymentGroupResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 404].includes(httpRes?.status):
                 break;
@@ -225,12 +220,12 @@ export class PaymentGroups {
     /**
      * Update a payment group by id
      */
-    async paymentGroupsControllerUpdate(
+    async update(
         id: string,
         updatePaymentGroupDto: models.UpdatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerUpdateResponse> {
-        const req = new models.PaymentGroupsControllerUpdateRequest({
+    ): Promise<models.UpdateResponse> {
+        const req = new models.UpdateRequest({
             id: id,
             updatePaymentGroupDto: updatePaymentGroupDto,
         });
@@ -288,12 +283,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerUpdateResponse =
-            new models.PaymentGroupsControllerUpdateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.UpdateResponse = new models.UpdateResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -312,11 +306,11 @@ export class PaymentGroups {
     /**
      * Retrieve participants of a payment group by id
      */
-    async paymentGroupsControllerParticipants(
+    async getParticipants(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerParticipantsResponse> {
-        const req = new models.PaymentGroupsControllerParticipantsRequest({
+    ): Promise<models.GetParticipantsResponse> {
+        const req = new models.GetParticipantsRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -357,12 +351,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerParticipantsResponse =
-            new models.PaymentGroupsControllerParticipantsResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.GetParticipantsResponse = new models.GetParticipantsResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 404].includes(httpRes?.status):
                 break;
@@ -381,11 +374,11 @@ export class PaymentGroups {
     /**
      * Cancel a payment group by id
      */
-    async paymentGroupsControllerCancel(
+    async cancel(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerCancelResponse> {
-        const req = new models.PaymentGroupsControllerCancelRequest({
+    ): Promise<models.CancelPaymentGroupResponse> {
+        const req = new models.CancelPaymentGroupRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -422,12 +415,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerCancelResponse =
-            new models.PaymentGroupsControllerCancelResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CancelPaymentGroupResponse = new models.CancelPaymentGroupResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -446,11 +438,11 @@ export class PaymentGroups {
     /**
      * Expire a payment group by id
      */
-    async paymentGroupsControllerExpire(
+    async expire(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerExpireResponse> {
-        const req = new models.PaymentGroupsControllerExpireRequest({
+    ): Promise<models.ExpirePaymentGroupResponse> {
+        const req = new models.ExpirePaymentGroupRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -487,12 +479,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerExpireResponse =
-            new models.PaymentGroupsControllerExpireResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.ExpirePaymentGroupResponse = new models.ExpirePaymentGroupResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -511,12 +502,12 @@ export class PaymentGroups {
     /**
      * Validate a payment group by id
      */
-    async paymentGroupsControllerValidate(
+    async validatePaymentGroup(
         id: string,
         validatePaymentGroupDto: models.ValidatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentGroupsControllerValidateResponse> {
-        const req = new models.PaymentGroupsControllerValidateRequest({
+    ): Promise<models.ValidatePaymentGroupResponse> {
+        const req = new models.ValidatePaymentGroupRequest({
             id: id,
             validatePaymentGroupDto: validatePaymentGroupDto,
         });
@@ -578,12 +569,11 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentGroupsControllerValidateResponse =
-            new models.PaymentGroupsControllerValidateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.ValidatePaymentGroupResponse = new models.ValidatePaymentGroupResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;

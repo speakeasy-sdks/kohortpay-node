@@ -16,10 +16,11 @@ export class Customers {
 
     /**
      * find All customers of an organization.
+     *
+     * @remarks
+     * find All customers of an organization.
      */
-    async customersControllerFindAll(
-        config?: AxiosRequestConfig
-    ): Promise<models.CustomersControllerFindAllResponse> {
+    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllCustomersResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -54,12 +55,11 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CustomersControllerFindAllResponse =
-            new models.CustomersControllerFindAllResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindAllCustomersResponse = new models.FindAllCustomersResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -81,10 +81,10 @@ export class Customers {
      * @remarks
      * Create a new customer.
      */
-    async customersControllerCreate(
+    async create(
         req: models.CreateCustomerDto,
         config?: AxiosRequestConfig
-    ): Promise<models.CustomersControllerCreateResponse> {
+    ): Promise<models.CreateCustomerResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new models.CreateCustomerDto(req);
         }
@@ -139,12 +139,11 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CustomersControllerCreateResponse =
-            new models.CustomersControllerCreateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CreateCustomerResponse = new models.CreateCustomerResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -160,11 +159,14 @@ export class Customers {
         return res;
     }
 
-    async customersControllerRemove(
-        id: string,
-        config?: AxiosRequestConfig
-    ): Promise<models.CustomersControllerRemoveResponse> {
-        const req = new models.CustomersControllerRemoveRequest({
+    /**
+     * Delete a customer.
+     *
+     * @remarks
+     * Delete a customer.
+     */
+    async delete(id: string, config?: AxiosRequestConfig): Promise<models.DeleteCustomerResponse> {
+        const req = new models.DeleteCustomerRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -201,12 +203,11 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CustomersControllerRemoveResponse =
-            new models.CustomersControllerRemoveResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.DeleteCustomerResponse = new models.DeleteCustomerResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -224,12 +225,15 @@ export class Customers {
 
     /**
      * find All customers of an organization.
+     *
+     * @remarks
+     * find All customers of an organization.
      */
-    async customersControllerFindOne(
+    async findOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CustomersControllerFindOneResponse> {
-        const req = new models.CustomersControllerFindOneRequest({
+    ): Promise<models.FindOneCustomerResponse> {
+        const req = new models.FindOneCustomerRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -266,12 +270,11 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CustomersControllerFindOneResponse =
-            new models.CustomersControllerFindOneResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindOneCustomerResponse = new models.FindOneCustomerResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -287,12 +290,18 @@ export class Customers {
         return res;
     }
 
-    async customersControllerUpdate(
+    /**
+     * Update a customer.
+     *
+     * @remarks
+     * Update a customer.
+     */
+    async updateCustomer(
         id: string,
         updateCustomerDto: models.UpdateCustomerDto,
         config?: AxiosRequestConfig
-    ): Promise<models.CustomersControllerUpdateResponse> {
-        const req = new models.CustomersControllerUpdateRequest({
+    ): Promise<models.UpdateCustomerResponse> {
+        const req = new models.UpdateCustomerRequest({
             id: id,
             updateCustomerDto: updateCustomerDto,
         });
@@ -350,12 +359,11 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CustomersControllerUpdateResponse =
-            new models.CustomersControllerUpdateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.UpdateCustomerResponse = new models.UpdateCustomerResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;

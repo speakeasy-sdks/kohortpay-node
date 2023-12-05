@@ -17,9 +17,7 @@ export class CheckoutSessions {
     /**
      * Retrieve all checkout sessions for the current organization and livemode.
      */
-    async checkoutSessionsControllerFindAll(
-        config?: AxiosRequestConfig
-    ): Promise<models.CheckoutSessionsControllerFindAllResponse> {
+    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllCheckoutSessionsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -54,8 +52,8 @@ export class CheckoutSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CheckoutSessionsControllerFindAllResponse =
-            new models.CheckoutSessionsControllerFindAllResponse({
+        const res: models.FindAllCheckoutSessionsResponse =
+            new models.FindAllCheckoutSessionsResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -121,10 +119,10 @@ export class CheckoutSessions {
     /**
      * Create a new checkout session.
      */
-    async checkoutSessionsControllerCreate(
+    async create(
         req: models.CreateCheckoutSessionDto,
         config?: AxiosRequestConfig
-    ): Promise<models.CheckoutSessionsControllerCreateResponse> {
+    ): Promise<models.CreateCheckoutResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new models.CreateCheckoutSessionDto(req);
         }
@@ -179,12 +177,11 @@ export class CheckoutSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CheckoutSessionsControllerCreateResponse =
-            new models.CheckoutSessionsControllerCreateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CreateCheckoutResponse = new models.CreateCheckoutResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
@@ -249,11 +246,11 @@ export class CheckoutSessions {
     /**
      * Retrieve a checkout session by ID for the current organization and livemode.
      */
-    async checkoutSessionsControllerFindOne(
+    async findOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CheckoutSessionsControllerFindOneResponse> {
-        const req = new models.CheckoutSessionsControllerFindOneRequest({
+    ): Promise<models.FindOneCheckoutSessionResponse> {
+        const req = new models.FindOneCheckoutSessionRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -290,8 +287,8 @@ export class CheckoutSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CheckoutSessionsControllerFindOneResponse =
-            new models.CheckoutSessionsControllerFindOneResponse({
+        const res: models.FindOneCheckoutSessionResponse =
+            new models.FindOneCheckoutSessionResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -345,11 +342,11 @@ export class CheckoutSessions {
     /**
      * Expire a checkout session by ID for the current organization and livemode.
      */
-    async checkoutSessionsControllerExpire(
+    async expire(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.CheckoutSessionsControllerExpireResponse> {
-        const req = new models.CheckoutSessionsControllerExpireRequest({
+    ): Promise<models.ExpireCheckoutSessionResponse> {
+        const req = new models.ExpireCheckoutSessionRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -390,12 +387,11 @@ export class CheckoutSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.CheckoutSessionsControllerExpireResponse =
-            new models.CheckoutSessionsControllerExpireResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.ExpireCheckoutSessionResponse = new models.ExpireCheckoutSessionResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:

@@ -7,7 +7,7 @@ async function run() {
         bearer: "",
     });
 
-    const res = await sdk.paymentIntents.paymentIntentsControllerFindAll();
+    const res = await sdk.paymentIntents.findAll();
 
     if (res.statusCode == 200) {
         // handle response

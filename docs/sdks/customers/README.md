@@ -3,13 +3,13 @@
 
 ### Available Operations
 
-* [customersControllerFindAll](#customerscontrollerfindall) - find All customers of an organization.
-* [customersControllerCreate](#customerscontrollercreate) - Create a new customer.
-* [customersControllerRemove](#customerscontrollerremove)
-* [customersControllerFindOne](#customerscontrollerfindone) - find All customers of an organization.
-* [customersControllerUpdate](#customerscontrollerupdate)
+* [findAll](#findall) - find All customers of an organization.
+* [create](#create) - Create a new customer.
+* [delete](#delete) - Delete a customer.
+* [findOne](#findone) - find All customers of an organization.
+* [updateCustomer](#updatecustomer) - Update a customer.
 
-## customersControllerFindAll
+## findAll
 
 find All customers of an organization.
 
@@ -23,7 +23,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.customers.customersControllerFindAll();
+  const res = await sdk.customers.findAll();
 
   if (res.statusCode == 200) {
     // handle response
@@ -42,14 +42,14 @@ run();
 
 ### Response
 
-**Promise<[models.CustomersControllerFindAllResponse](../../models/customerscontrollerfindallresponse.md)>**
+**Promise<[models.FindAllCustomersResponse](../../models/findallcustomersresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## customersControllerCreate
+## create
 
 Create a new customer.
 
@@ -63,7 +63,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.customers.customersControllerCreate({
+  const res = await sdk.customers.create({
     emailAddress: "user@example.com",
     firstName: "John",
     lastName: "Doe",
@@ -105,19 +105,21 @@ run();
 
 ### Response
 
-**Promise<[models.CustomersControllerCreateResponse](../../models/customerscontrollercreateresponse.md)>**
+**Promise<[models.CreateCustomerResponse](../../models/createcustomerresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## customersControllerRemove
+## delete
+
+Delete a customer.
 
 ### Example Usage
 
 ```typescript
-import { CustomersControllerRemoveRequest, KohortPay } from "kohortpay-node";
+import { DeleteCustomerRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -125,7 +127,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.customers.customersControllerRemove(id);
+  const res = await sdk.customers.delete(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -145,21 +147,21 @@ run();
 
 ### Response
 
-**Promise<[models.CustomersControllerRemoveResponse](../../models/customerscontrollerremoveresponse.md)>**
+**Promise<[models.DeleteCustomerResponse](../../models/deletecustomerresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## customersControllerFindOne
+## findOne
 
 find All customers of an organization.
 
 ### Example Usage
 
 ```typescript
-import { CustomersControllerFindOneRequest, KohortPay } from "kohortpay-node";
+import { FindOneCustomerRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -167,7 +169,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.customers.customersControllerFindOne(id);
+  const res = await sdk.customers.findOne(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -187,19 +189,21 @@ run();
 
 ### Response
 
-**Promise<[models.CustomersControllerFindOneResponse](../../models/customerscontrollerfindoneresponse.md)>**
+**Promise<[models.FindOneCustomerResponse](../../models/findonecustomerresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## customersControllerUpdate
+## updateCustomer
+
+Update a customer.
 
 ### Example Usage
 
 ```typescript
-import { CustomersControllerUpdateRequest, KohortPay, UpdateCustomerDto } from "kohortpay-node";
+import { KohortPay, UpdateCustomerDto, UpdateCustomerRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -210,7 +214,7 @@ const updateCustomerDto: UpdateCustomerDto = {
   deletedAt: new Date("2021-07-22T00:00:00.000Z"),
 };
 
-  const res = await sdk.customers.customersControllerUpdate(id, updateCustomerDto);
+  const res = await sdk.customers.updateCustomer(id, updateCustomerDto);
 
   if (res.statusCode == 200) {
     // handle response
@@ -231,7 +235,7 @@ run();
 
 ### Response
 
-**Promise<[models.CustomersControllerUpdateResponse](../../models/customerscontrollerupdateresponse.md)>**
+**Promise<[models.UpdateCustomerResponse](../../models/updatecustomerresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

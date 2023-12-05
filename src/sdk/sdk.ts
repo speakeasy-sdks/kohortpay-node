@@ -16,7 +16,7 @@ import { AxiosInstance } from "axios";
  */
 export const ServerList = [
     /**
-     * production
+     * Production
      */
     "https://api.kohortpay.com",
 ] as const;
@@ -54,9 +54,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "0.1.6";
+    sdkVersion = "0.1.7";
     genVersion = "2.210.6";
-    userAgent = "speakeasy-sdk/typescript 0.1.6 2.210.6 0.1.0 kohortpay-node";
+    userAgent = "speakeasy-sdk/typescript 0.1.7 2.210.6 0.1.0 kohortpay-node";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);

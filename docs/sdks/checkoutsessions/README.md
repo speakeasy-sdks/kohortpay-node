@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [checkoutSessionsControllerFindAll](#checkoutsessionscontrollerfindall) - Retrieve all checkout sessions for the current organization and livemode.
-* [checkoutSessionsControllerCreate](#checkoutsessionscontrollercreate) - Create a new checkout session.
-* [checkoutSessionsControllerFindOne](#checkoutsessionscontrollerfindone) - Retrieve a checkout session by ID for the current organization and livemode.
-* [checkoutSessionsControllerExpire](#checkoutsessionscontrollerexpire) - Expire a checkout session by ID for the current organization and livemode.
+* [findAll](#findall) - Retrieve all checkout sessions for the current organization and livemode.
+* [create](#create) - Create a new checkout session.
+* [findOne](#findone) - Retrieve a checkout session by ID for the current organization and livemode.
+* [expire](#expire) - Expire a checkout session by ID for the current organization and livemode.
 
-## checkoutSessionsControllerFindAll
+## findAll
 
 Retrieve all checkout sessions for the current organization and livemode.
 
@@ -22,7 +22,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.checkoutSessions.checkoutSessionsControllerFindAll();
+  const res = await sdk.checkoutSessions.findAll();
 
   if (res.statusCode == 200) {
     // handle response
@@ -41,14 +41,14 @@ run();
 
 ### Response
 
-**Promise<[models.CheckoutSessionsControllerFindAllResponse](../../models/checkoutsessionscontrollerfindallresponse.md)>**
+**Promise<[models.FindAllCheckoutSessionsResponse](../../models/findallcheckoutsessionsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## checkoutSessionsControllerCreate
+## create
 
 Create a new checkout session.
 
@@ -62,7 +62,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.checkoutSessions.checkoutSessionsControllerCreate({
+  const res = await sdk.checkoutSessions.create({
     successUrl: "https://success.example.com",
     cancelUrl: "https://cancel.example.com",
     customerEmail: "customer@example.com",
@@ -103,21 +103,21 @@ run();
 
 ### Response
 
-**Promise<[models.CheckoutSessionsControllerCreateResponse](../../models/checkoutsessionscontrollercreateresponse.md)>**
+**Promise<[models.CreateCheckoutResponse](../../models/createcheckoutresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## checkoutSessionsControllerFindOne
+## findOne
 
 Retrieve a checkout session by ID for the current organization and livemode.
 
 ### Example Usage
 
 ```typescript
-import { CheckoutSessionsControllerFindOneRequest, KohortPay } from "kohortpay-node";
+import { FindOneCheckoutSessionRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -125,7 +125,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.checkoutSessions.checkoutSessionsControllerFindOne(id);
+  const res = await sdk.checkoutSessions.findOne(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -145,21 +145,21 @@ run();
 
 ### Response
 
-**Promise<[models.CheckoutSessionsControllerFindOneResponse](../../models/checkoutsessionscontrollerfindoneresponse.md)>**
+**Promise<[models.FindOneCheckoutSessionResponse](../../models/findonecheckoutsessionresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## checkoutSessionsControllerExpire
+## expire
 
 Expire a checkout session by ID for the current organization and livemode.
 
 ### Example Usage
 
 ```typescript
-import { CheckoutSessionsControllerExpireRequest, KohortPay } from "kohortpay-node";
+import { ExpireCheckoutSessionRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -167,7 +167,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.checkoutSessions.checkoutSessionsControllerExpire(id);
+  const res = await sdk.checkoutSessions.expire(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -187,7 +187,7 @@ run();
 
 ### Response
 
-**Promise<[models.CheckoutSessionsControllerExpireResponse](../../models/checkoutsessionscontrollerexpireresponse.md)>**
+**Promise<[models.ExpireCheckoutSessionResponse](../../models/expirecheckoutsessionresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [paymentIntentsControllerFindAll](#paymentintentscontrollerfindall) - Retrieve all Payment Intents
-* [paymentIntentsControllerCreate](#paymentintentscontrollercreate) - Create a new Payment Intent
-* [paymentIntentsControllerFindOne](#paymentintentscontrollerfindone) - Retrieve a Payment Intent by ID
-* [paymentIntentsControllerCancel](#paymentintentscontrollercancel) - Cancel a Payment Intent by ID
+* [findAll](#findall) - Retrieve all Payment Intents
+* [create](#create) - Create a new Payment Intent
+* [findOne](#findone) - Retrieve a Payment Intent by ID
+* [cancel](#cancel) - Cancel a Payment Intent by ID
 
-## paymentIntentsControllerFindAll
+## findAll
 
 Retrieve all Payment Intents
 
@@ -22,7 +22,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.paymentIntents.paymentIntentsControllerFindAll();
+  const res = await sdk.paymentIntents.findAll();
 
   if (res.statusCode == 200) {
     // handle response
@@ -41,14 +41,14 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentIntentsControllerFindAllResponse](../../models/paymentintentscontrollerfindallresponse.md)>**
+**Promise<[models.FindAllPaymentIntentsResponse](../../models/findallpaymentintentsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentIntentsControllerCreate
+## create
 
 Create a new Payment Intent
 
@@ -62,7 +62,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.paymentIntents.paymentIntentsControllerCreate({
+  const res = await sdk.paymentIntents.create({
     amount: 5000,
     checkoutSessionId: "cs_1abc2def3ghi",
     customerId: "cus_1abc2def3ghi",
@@ -88,21 +88,21 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentIntentsControllerCreateResponse](../../models/paymentintentscontrollercreateresponse.md)>**
+**Promise<[models.CreatePaymentIntentResponse](../../models/createpaymentintentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentIntentsControllerFindOne
+## findOne
 
 Retrieve a Payment Intent by ID
 
 ### Example Usage
 
 ```typescript
-import { KohortPay, PaymentIntentsControllerFindOneRequest } from "kohortpay-node";
+import { FindOnePaymentIntentRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -110,7 +110,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.paymentIntents.paymentIntentsControllerFindOne(id);
+  const res = await sdk.paymentIntents.findOne(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -130,34 +130,30 @@ run();
 
 ### Response
 
-**Promise<[models.PaymentIntentsControllerFindOneResponse](../../models/paymentintentscontrollerfindoneresponse.md)>**
+**Promise<[models.FindOnePaymentIntentResponse](../../models/findonepaymentintentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
-## paymentIntentsControllerCancel
+## cancel
 
 Cancel a Payment Intent by ID
 
 ### Example Usage
 
 ```typescript
-import {
-  KohortPay,
-  PaymentIntentsControllerCancelRequest,
-  PaymentIntentsControllerCancelSecurity,
-} from "kohortpay-node";
+import { CancelPaymentIntentRequest, CancelPaymentIntentSecurity, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay();
 const id: string = "string";
-const operationSecurity: PaymentIntentsControllerCancelSecurity = {
+const operationSecurity: CancelPaymentIntentSecurity = {
   bearer: "",
 };
 
-  const res = await sdk.paymentIntents.paymentIntentsControllerCancel(operationSecurity, id);
+  const res = await sdk.paymentIntents.cancel(operationSecurity, id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -169,16 +165,16 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                              | [models.PaymentIntentsControllerCancelSecurity](../../models/paymentintentscontrollercancelsecurity.md) | :heavy_check_mark:                                                                                      | The security requirements to use for the request.                                                       |
-| `id`                                                                                                    | *string*                                                                                                | :heavy_check_mark:                                                                                      | ID of the Payment Intent to cancel                                                                      |
-| `config`                                                                                                | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                            | :heavy_minus_sign:                                                                                      | Available config options for making requests.                                                           |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `security`                                                                        | [models.CancelPaymentIntentSecurity](../../models/cancelpaymentintentsecurity.md) | :heavy_check_mark:                                                                | The security requirements to use for the request.                                 |
+| `id`                                                                              | *string*                                                                          | :heavy_check_mark:                                                                | ID of the Payment Intent to cancel                                                |
+| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |
 
 
 ### Response
 
-**Promise<[models.PaymentIntentsControllerCancelResponse](../../models/paymentintentscontrollercancelresponse.md)>**
+**Promise<[models.CancelPaymentIntentResponse](../../models/cancelpaymentintentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

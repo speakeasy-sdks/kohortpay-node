@@ -17,9 +17,7 @@ export class PaymentIntents {
     /**
      * Retrieve all Payment Intents
      */
-    async paymentIntentsControllerFindAll(
-        config?: AxiosRequestConfig
-    ): Promise<models.PaymentIntentsControllerFindAllResponse> {
+    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllPaymentIntentsResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -54,12 +52,11 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentIntentsControllerFindAllResponse =
-            new models.PaymentIntentsControllerFindAllResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindAllPaymentIntentsResponse = new models.FindAllPaymentIntentsResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case httpRes?.status == 200:
                 break;
@@ -78,10 +75,10 @@ export class PaymentIntents {
     /**
      * Create a new Payment Intent
      */
-    async paymentIntentsControllerCreate(
+    async create(
         req: models.CreatePaymentIntentDto,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentIntentsControllerCreateResponse> {
+    ): Promise<models.CreatePaymentIntentResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new models.CreatePaymentIntentDto(req);
         }
@@ -136,12 +133,11 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentIntentsControllerCreateResponse =
-            new models.PaymentIntentsControllerCreateResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CreatePaymentIntentResponse = new models.CreatePaymentIntentResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 201:
@@ -176,11 +172,11 @@ export class PaymentIntents {
     /**
      * Retrieve a Payment Intent by ID
      */
-    async paymentIntentsControllerFindOne(
+    async findOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentIntentsControllerFindOneResponse> {
-        const req = new models.PaymentIntentsControllerFindOneRequest({
+    ): Promise<models.FindOnePaymentIntentResponse> {
+        const req = new models.FindOnePaymentIntentRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -217,12 +213,11 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentIntentsControllerFindOneResponse =
-            new models.PaymentIntentsControllerFindOneResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.FindOnePaymentIntentResponse = new models.FindOnePaymentIntentResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
@@ -241,12 +236,12 @@ export class PaymentIntents {
     /**
      * Cancel a Payment Intent by ID
      */
-    async paymentIntentsControllerCancel(
-        security: models.PaymentIntentsControllerCancelSecurity,
+    async cancel(
+        security: models.CancelPaymentIntentSecurity,
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<models.PaymentIntentsControllerCancelResponse> {
-        const req = new models.PaymentIntentsControllerCancelRequest({
+    ): Promise<models.CancelPaymentIntentResponse> {
+        const req = new models.CancelPaymentIntentRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -260,7 +255,7 @@ export class PaymentIntents {
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new models.PaymentIntentsControllerCancelSecurity(security);
+            security = new models.CancelPaymentIntentSecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -283,12 +278,11 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.PaymentIntentsControllerCancelResponse =
-            new models.PaymentIntentsControllerCancelResponse({
-                statusCode: httpRes.status,
-                contentType: responseContentType,
-                rawResponse: httpRes,
-            });
+        const res: models.CancelPaymentIntentResponse = new models.CancelPaymentIntentResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
         switch (true) {
             case [200, 400].includes(httpRes?.status):
                 break;
