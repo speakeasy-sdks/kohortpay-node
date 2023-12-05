@@ -35,6 +35,6 @@ typescript:
   installationURL: https://github.com/kohortpay/kohortpay-node
   maxMethodParams: 4
   outputModelSuffix: output
-  packageName: kohortpay-node
+  packageName: kohortpay
   published: true
   repoSubDirectory: .
