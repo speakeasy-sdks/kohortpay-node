@@ -32,9 +32,6 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
-  installationURL: https://github.com/kohortpay/kohortpay-node
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: kohortPay
-  published: true
-  repoSubDirectory: .
