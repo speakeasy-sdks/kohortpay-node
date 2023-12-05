@@ -20,7 +20,7 @@ features:
     methodSecurity: 2.82.0
 typescript:
   version: 0.1.0
-  author: KohortPay
+  author: Kohortpay
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -34,4 +34,4 @@ typescript:
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
-  packageName: kohortPay
+  packageName: kohortpay
