@@ -1,6 +1,6 @@
 {
-  "name": "kohortpay",
-  "version": "0.1.1",
+  "name": "kohortpay-node",
+  "version": "0.1.2",
   "author": "kohortpay-sdk",
   "scripts": {
     "prepare": "tsc --build",
