@@ -1,7 +1,5 @@
 # UnauthorizedException
 
-API key is not Valid
-
 
 ## Fields
 

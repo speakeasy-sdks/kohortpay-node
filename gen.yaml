@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 2419bcb8cb865d46a0bb5915a7fd0a9c
+  docChecksum: 0fe4451f7901babf186b86614cae90d3
   docVersion: 0.1.0
   speakeasyVersion: 1.125.2
   generationVersion: 2.210.6
@@ -20,7 +20,7 @@ features:
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
 typescript:
-  version: 0.1.5
+  version: 0.1.6
   author: kohortpay-sdk
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true

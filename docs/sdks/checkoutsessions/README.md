@@ -1,5 +1,5 @@
-# CheckoutSessionsAPI
-(*checkoutSessionsAPI*)
+# CheckoutSessions
+(*checkoutSessions*)
 
 ### Available Operations
 
@@ -22,7 +22,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerFindAll();
+  const res = await sdk.checkoutSessions.checkoutSessionsControllerFindAll();
 
   if (res.statusCode == 200) {
     // handle response
@@ -44,12 +44,9 @@ run();
 **Promise<[models.CheckoutSessionsControllerFindAllResponse](../../models/checkoutsessionscontrollerfindallresponse.md)>**
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.BadRequestResponse    | 400                          | application/json             |
-| models.UnauthorizedException | 401                          | application/json             |
-| models.ErrorT                | 404                          | application/json             |
-| models.SDKError              | 400-600                      | */*                          |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
 
 ## checkoutSessionsControllerCreate
 
@@ -65,7 +62,7 @@ async function run() {
     bearer: "",
   });
 
-  const res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerCreate({
+  const res = await sdk.checkoutSessions.checkoutSessionsControllerCreate({
     successUrl: "https://success.example.com",
     cancelUrl: "https://cancel.example.com",
     customerEmail: "customer@example.com",
@@ -109,12 +106,9 @@ run();
 **Promise<[models.CheckoutSessionsControllerCreateResponse](../../models/checkoutsessionscontrollercreateresponse.md)>**
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.BadRequestResponse    | 400                          | application/json             |
-| models.UnauthorizedException | 401                          | application/json             |
-| models.NotFoundException     | 404                          | application/json             |
-| models.SDKError              | 400-600                      | */*                          |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
 
 ## checkoutSessionsControllerFindOne
 
@@ -131,7 +125,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerFindOne(id);
+  const res = await sdk.checkoutSessions.checkoutSessionsControllerFindOne(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -154,11 +148,9 @@ run();
 **Promise<[models.CheckoutSessionsControllerFindOneResponse](../../models/checkoutsessionscontrollerfindoneresponse.md)>**
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.UnauthorizedException | 401                          | application/json             |
-| models.NotFoundException     | 404                          | application/json             |
-| models.SDKError              | 400-600                      | */*                          |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
 
 ## checkoutSessionsControllerExpire
 
@@ -175,7 +167,7 @@ async function run() {
   });
 const id: string = "string";
 
-  const res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerExpire(id);
+  const res = await sdk.checkoutSessions.checkoutSessionsControllerExpire(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -198,8 +190,6 @@ run();
 **Promise<[models.CheckoutSessionsControllerExpireResponse](../../models/checkoutsessionscontrollerexpireresponse.md)>**
 ### Errors
 
-| Error Object                 | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.UnauthorizedException | 401                          | application/json             |
-| models.BadRequestResponse    | 404                          | application/json             |
-| models.SDKError              | 400-600                      | */*                          |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |

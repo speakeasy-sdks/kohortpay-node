@@ -61,9 +61,9 @@ export class Customers {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case httpRes?.status == 200:
+            case [200, 400].includes(httpRes?.status):
                 break;
-            case [400, 401, 404, 500].includes(httpRes?.status):
+            case httpRes?.status == 500:
                 throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
@@ -146,9 +146,9 @@ export class Customers {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case httpRes?.status == 200:
+            case [200, 400].includes(httpRes?.status):
                 break;
-            case [400, 401, 404, 500].includes(httpRes?.status):
+            case httpRes?.status == 500:
                 throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
@@ -208,9 +208,9 @@ export class Customers {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case httpRes?.status == 200:
+            case [200, 400].includes(httpRes?.status):
                 break;
-            case [400, 401, 404, 500].includes(httpRes?.status):
+            case httpRes?.status == 500:
                 throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
@@ -273,9 +273,9 @@ export class Customers {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case httpRes?.status == 200:
+            case [200, 400].includes(httpRes?.status):
                 break;
-            case [400, 401, 404, 500].includes(httpRes?.status):
+            case httpRes?.status == 500:
                 throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
@@ -357,9 +357,9 @@ export class Customers {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case httpRes?.status == 200:
+            case [200, 400].includes(httpRes?.status):
                 break;
-            case [400, 401, 404, 500].includes(httpRes?.status):
+            case httpRes?.status == 500:
                 throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,

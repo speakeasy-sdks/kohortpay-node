@@ -1,7 +1,7 @@
 src/sdk/paymentintents.ts
 src/sdk/paymentgroups.ts
 src/sdk/customers.ts
-src/sdk/checkoutsessionsapi.ts
+src/sdk/checkoutsessions.ts
 src/sdk/sdk.ts
 .eslintrc.yml
 jest.config.js
@@ -47,10 +47,10 @@ src/models/customerscontrollerfindoneop.ts
 src/models/customerscontrollerupdateop.ts
 src/models/updatecustomerdto.ts
 src/models/checkoutsessionscontrollerfindallop.ts
+src/models/error.ts
+src/models/unauthorizedexception.ts
 src/models/badrequestresponse.ts
 src/models/errordetail.ts
-src/models/unauthorizedexception.ts
-src/models/error.ts
 src/models/checkoutsessionscontrollercreateop.ts
 src/models/notfoundexception.ts
 src/models/createcheckoutsessiondto.ts
@@ -101,10 +101,10 @@ docs/models/customerscontrollerupdaterequest.md
 docs/models/customerscontrollerupdateresponse.md
 docs/models/updatecustomerdto.md
 docs/models/checkoutsessionscontrollerfindallresponse.md
+docs/models/errort.md
+docs/models/unauthorizedexception.md
 docs/models/badrequestresponse.md
 docs/models/errordetail.md
-docs/models/unauthorizedexception.md
-docs/models/errort.md
 docs/models/checkoutsessionscontrollercreateresponse.md
 docs/models/notfoundexception.md
 docs/models/createcheckoutsessiondtometadata.md
@@ -119,6 +119,6 @@ docs/sdks/kohortpay/README.md
 docs/sdks/paymentintents/README.md
 docs/sdks/paymentgroups/README.md
 docs/sdks/customers/README.md
-docs/sdks/checkoutsessionsapi/README.md
+docs/sdks/checkoutsessions/README.md
 USAGE.md
 .gitattributes

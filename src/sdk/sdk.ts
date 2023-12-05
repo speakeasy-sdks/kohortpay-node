@@ -4,7 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as models from "../models";
-import { CheckoutSessionsAPI } from "./checkoutsessionsapi";
+import { CheckoutSessions } from "./checkoutsessions";
 import { Customers } from "./customers";
 import { PaymentGroups } from "./paymentgroups";
 import { PaymentIntents } from "./paymentintents";
@@ -54,9 +54,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "0.1.5";
+    sdkVersion = "0.1.6";
     genVersion = "2.210.6";
-    userAgent = "speakeasy-sdk/typescript 0.1.5 2.210.6 0.1.0 kohortpay-node";
+    userAgent = "speakeasy-sdk/typescript 0.1.6 2.210.6 0.1.0 kohortpay-node";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -138,7 +138,7 @@ export class KohortPay {
     public paymentIntents: PaymentIntents;
     public paymentGroups: PaymentGroups;
     public customers: Customers;
-    public checkoutSessionsAPI: CheckoutSessionsAPI;
+    public checkoutSessions: CheckoutSessions;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -162,6 +162,6 @@ export class KohortPay {
         this.paymentIntents = new PaymentIntents(this.sdkConfiguration);
         this.paymentGroups = new PaymentGroups(this.sdkConfiguration);
         this.customers = new Customers(this.sdkConfiguration);
-        this.checkoutSessionsAPI = new CheckoutSessionsAPI(this.sdkConfiguration);
+        this.checkoutSessions = new CheckoutSessions(this.sdkConfiguration);
     }
 }

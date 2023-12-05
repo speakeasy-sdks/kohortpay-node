@@ -3,6 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../internal/utils";
+import { BadRequestResponse } from "./badrequestresponse";
+import { UnauthorizedException } from "./unauthorizedexception";
 import { AxiosResponse } from "axios";
 
 export class CheckoutSessionsControllerExpireRequest extends SpeakeasyBase {
@@ -31,4 +33,16 @@ export class CheckoutSessionsControllerExpireResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse: AxiosResponse;
+
+    /**
+     * API key is not Valid
+     */
+    @SpeakeasyMetadata()
+    unauthorizedException?: UnauthorizedException;
+
+    /**
+     * Checkout session not found.
+     */
+    @SpeakeasyMetadata()
+    badRequestResponse?: BadRequestResponse;
 }

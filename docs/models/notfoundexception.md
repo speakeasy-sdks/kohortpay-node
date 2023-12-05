@@ -1,7 +1,5 @@
 # NotFoundException
 
-Checkout session not found.
-
 
 ## Fields
 

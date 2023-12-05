@@ -86,12 +86,12 @@ run();
 * [customersControllerFindOne](docs/sdks/customers/README.md#customerscontrollerfindone) - find All customers of an organization.
 * [customersControllerUpdate](docs/sdks/customers/README.md#customerscontrollerupdate)
 
-### [checkoutSessionsAPI](docs/sdks/checkoutsessionsapi/README.md)
+### [checkoutSessions](docs/sdks/checkoutsessions/README.md)
 
-* [checkoutSessionsControllerFindAll](docs/sdks/checkoutsessionsapi/README.md#checkoutsessionscontrollerfindall) - Retrieve all checkout sessions for the current organization and livemode.
-* [checkoutSessionsControllerCreate](docs/sdks/checkoutsessionsapi/README.md#checkoutsessionscontrollercreate) - Create a new checkout session.
-* [checkoutSessionsControllerFindOne](docs/sdks/checkoutsessionsapi/README.md#checkoutsessionscontrollerfindone) - Retrieve a checkout session by ID for the current organization and livemode.
-* [checkoutSessionsControllerExpire](docs/sdks/checkoutsessionsapi/README.md#checkoutsessionscontrollerexpire) - Expire a checkout session by ID for the current organization and livemode.
+* [checkoutSessionsControllerFindAll](docs/sdks/checkoutsessions/README.md#checkoutsessionscontrollerfindall) - Retrieve all checkout sessions for the current organization and livemode.
+* [checkoutSessionsControllerCreate](docs/sdks/checkoutsessions/README.md#checkoutsessionscontrollercreate) - Create a new checkout session.
+* [checkoutSessionsControllerFindOne](docs/sdks/checkoutsessions/README.md#checkoutsessionscontrollerfindone) - Retrieve a checkout session by ID for the current organization and livemode.
+* [checkoutSessionsControllerExpire](docs/sdks/checkoutsessions/README.md#checkoutsessionscontrollerexpire) - Expire a checkout session by ID for the current organization and livemode.
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
@@ -99,12 +99,9 @@ run();
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
-| Error Object                 | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models.BadRequestResponse    | 400                          | application/json             |
-| models.UnauthorizedException | 401                          | application/json             |
-| models.ErrorT                | 404                          | application/json             |
-| models.SDKError              | 400-600                      | */*                          |
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
 
 Example
 
@@ -118,18 +115,9 @@ async function run() {
 
     let res;
     try {
-        res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerFindAll();
+        res = await sdk.paymentIntents.paymentIntentsControllerFindAll();
     } catch (err) {
-        if (err instanceof models.BadRequestResponse) {
-            console.error(err); // handle exception
-            throw err;
-        } else if (err instanceof models.UnauthorizedException) {
-            console.error(err); // handle exception
-            throw err;
-        } else if (err instanceof models.ErrorT) {
-            console.error(err); // handle exception
-            throw err;
-        } else if (err instanceof models.SDKError) {
+        if (err instanceof models.SDKError) {
             console.error(err); // handle exception
             throw err;
         }

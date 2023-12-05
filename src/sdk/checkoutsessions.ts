@@ -7,7 +7,7 @@ import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
-export class CheckoutSessionsAPI {
+export class CheckoutSessions {
     private sdkConfiguration: SDKConfiguration;
 
     constructor(sdkConfig: SDKConfiguration) {
@@ -66,12 +66,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.badRequestResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.BadRequestResponse
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.BadRequestResponse(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -83,12 +81,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.unauthorizedException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.UnauthorizedException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.UnauthorizedException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -100,9 +96,7 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ErrorT);
-                    err.rawResponse = httpRes;
-                    throw new models.ErrorT(err);
+                    res.error = utils.objectToClass(JSON.parse(decodedRes), models.ErrorT);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -197,12 +191,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 400:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.badRequestResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.BadRequestResponse
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.BadRequestResponse(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -214,12 +206,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.unauthorizedException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.UnauthorizedException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.UnauthorizedException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -231,12 +221,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.notFoundException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.NotFoundException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.NotFoundException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -312,21 +300,12 @@ export class CheckoutSessionsAPI {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case [400, 500].includes(httpRes?.status):
-                throw new models.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.unauthorizedException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.UnauthorizedException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.UnauthorizedException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -338,12 +317,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.notFoundException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.NotFoundException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.NotFoundException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -353,6 +330,13 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
+            case httpRes?.status == 500:
+                throw new models.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
@@ -416,21 +400,12 @@ export class CheckoutSessionsAPI {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case [400, 500].includes(httpRes?.status):
-                throw new models.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.unauthorizedException = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.UnauthorizedException
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.UnauthorizedException(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -442,12 +417,10 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(
+                    res.badRequestResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         models.BadRequestResponse
                     );
-                    err.rawResponse = httpRes;
-                    throw new models.BadRequestResponse(err);
                 } else {
                     throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
@@ -457,6 +430,13 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
+            case httpRes?.status == 500:
+                throw new models.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
         }
 
         return res;
