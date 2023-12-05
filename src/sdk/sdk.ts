@@ -3,7 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as components from "../models/components";
+import * as models from "../models";
 import { CheckoutSessionsAPI } from "./checkoutsessionsapi";
 import { Customers } from "./customers";
 import { PaymentGroups } from "./paymentgroups";
@@ -49,14 +49,14 @@ export type SDKProps = {
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
-    security?: components.Security | (() => Promise<components.Security>);
+    security?: models.Security | (() => Promise<models.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "0.1.4";
-    genVersion = "2.210.3";
-    userAgent = "speakeasy-sdk/typescript 0.1.4 2.210.3 0.1.0 kohortpay-node";
+    sdkVersion = "0.1.5";
+    genVersion = "2.210.6";
+    userAgent = "speakeasy-sdk/typescript 0.1.5 2.210.6 0.1.0 kohortpay-node";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -153,7 +153,7 @@ export class KohortPay {
         const defaultClient = props?.defaultClient ?? axios.create();
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
-            security: new components.Security({ bearer: props?.bearer }),
+            security: new models.Security({ bearer: props?.bearer }),
 
             serverURL: serverURL,
             retryConfig: props?.retryConfig,

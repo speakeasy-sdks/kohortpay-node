@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as components from "../models/components";
-import * as errors from "../models/errors";
-import * as operations from "../models/operations";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -21,7 +19,7 @@ export class PaymentIntents {
      */
     async paymentIntentsControllerFindAll(
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentIntentsControllerFindAllResponse> {
+    ): Promise<models.PaymentIntentsControllerFindAllResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -33,7 +31,7 @@ export class PaymentIntents {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -56,8 +54,8 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentIntentsControllerFindAllResponse =
-            new operations.PaymentIntentsControllerFindAllResponse({
+        const res: models.PaymentIntentsControllerFindAllResponse =
+            new models.PaymentIntentsControllerFindAllResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -65,9 +63,8 @@ export class PaymentIntents {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -82,11 +79,11 @@ export class PaymentIntents {
      * Create a new Payment Intent
      */
     async paymentIntentsControllerCreate(
-        req: components.CreatePaymentIntentDto,
+        req: models.CreatePaymentIntentDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentIntentsControllerCreateResponse> {
+    ): Promise<models.PaymentIntentsControllerCreateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new components.CreatePaymentIntentDto(req);
+            req = new models.CreatePaymentIntentDto(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -110,7 +107,7 @@ export class PaymentIntents {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -139,8 +136,8 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentIntentsControllerCreateResponse =
-            new operations.PaymentIntentsControllerCreateResponse({
+        const res: models.PaymentIntentsControllerCreateResponse =
+            new models.PaymentIntentsControllerCreateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -151,10 +148,10 @@ export class PaymentIntents {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     res.createPaymentIntentDto = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        components.CreatePaymentIntentDto
+                        models.CreatePaymentIntentDto
                     );
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -162,10 +159,8 @@ export class PaymentIntents {
                     );
                 }
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -182,8 +177,8 @@ export class PaymentIntents {
     async paymentIntentsControllerFindOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentIntentsControllerFindOneResponse> {
-        const req = new operations.PaymentIntentsControllerFindOneRequest({
+    ): Promise<models.PaymentIntentsControllerFindOneResponse> {
+        const req = new models.PaymentIntentsControllerFindOneRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -197,7 +192,7 @@ export class PaymentIntents {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -220,8 +215,8 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentIntentsControllerFindOneResponse =
-            new operations.PaymentIntentsControllerFindOneResponse({
+        const res: models.PaymentIntentsControllerFindOneResponse =
+            new models.PaymentIntentsControllerFindOneResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -229,10 +224,8 @@ export class PaymentIntents {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -247,11 +240,11 @@ export class PaymentIntents {
      * Cancel a Payment Intent by ID
      */
     async paymentIntentsControllerCancel(
-        security: operations.PaymentIntentsControllerCancelSecurity,
+        security: models.PaymentIntentsControllerCancelSecurity,
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentIntentsControllerCancelResponse> {
-        const req = new operations.PaymentIntentsControllerCancelRequest({
+    ): Promise<models.PaymentIntentsControllerCancelResponse> {
+        const req = new models.PaymentIntentsControllerCancelRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -265,7 +258,7 @@ export class PaymentIntents {
         );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.PaymentIntentsControllerCancelSecurity(security);
+            security = new models.PaymentIntentsControllerCancelSecurity(security);
         }
         const properties = utils.parseSecurityProperties(security);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -288,8 +281,8 @@ export class PaymentIntents {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentIntentsControllerCancelResponse =
-            new operations.PaymentIntentsControllerCancelResponse({
+        const res: models.PaymentIntentsControllerCancelResponse =
+            new models.PaymentIntentsControllerCancelResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -297,10 +290,8 @@ export class PaymentIntents {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,

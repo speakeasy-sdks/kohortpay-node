@@ -42,12 +42,12 @@ run();
 
 ### Response
 
-**Promise<[operations.CustomersControllerFindAllResponse](../../models/operations/customerscontrollerfindallresponse.md)>**
+**Promise<[models.CustomersControllerFindAllResponse](../../models/customerscontrollerfindallresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## customersControllerCreate
 
@@ -97,28 +97,27 @@ run();
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `request`                                                                    | [components.CreateCustomerDto](../../models/components/createcustomerdto.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [models.CreateCustomerDto](../../models/createcustomerdto.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `config`                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)  | :heavy_minus_sign:                                            | Available config options for making requests.                 |
 
 
 ### Response
 
-**Promise<[operations.CustomersControllerCreateResponse](../../models/operations/customerscontrollercreateresponse.md)>**
+**Promise<[models.CustomersControllerCreateResponse](../../models/customerscontrollercreateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## customersControllerRemove
 
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CustomersControllerRemoveRequest } from "kohortpay-node/dist/models/operations";
+import { CustomersControllerRemoveRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -146,12 +145,12 @@ run();
 
 ### Response
 
-**Promise<[operations.CustomersControllerRemoveResponse](../../models/operations/customerscontrollerremoveresponse.md)>**
+**Promise<[models.CustomersControllerRemoveResponse](../../models/customerscontrollerremoveresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## customersControllerFindOne
 
@@ -160,8 +159,7 @@ find All customers of an organization.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CustomersControllerFindOneRequest } from "kohortpay-node/dist/models/operations";
+import { CustomersControllerFindOneRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -189,21 +187,19 @@ run();
 
 ### Response
 
-**Promise<[operations.CustomersControllerFindOneResponse](../../models/operations/customerscontrollerfindoneresponse.md)>**
+**Promise<[models.CustomersControllerFindOneResponse](../../models/customerscontrollerfindoneresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## customersControllerUpdate
 
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { UpdateCustomerDto } from "kohortpay-node/dist/models/components";
-import { CustomersControllerUpdateRequest } from "kohortpay-node/dist/models/operations";
+import { CustomersControllerUpdateRequest, KohortPay, UpdateCustomerDto } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -226,18 +222,18 @@ run();
 
 ### Parameters
 
-| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `id`                                                                         | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `updateCustomerDto`                                                          | [components.UpdateCustomerDto](../../models/components/updatecustomerdto.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `config`                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                 | :heavy_minus_sign:                                                           | Available config options for making requests.                                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `id`                                                         | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `updateCustomerDto`                                          | [models.UpdateCustomerDto](../models/updatecustomerdto.md)   | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response
 
-**Promise<[operations.CustomersControllerUpdateResponse](../../models/operations/customerscontrollerupdateresponse.md)>**
+**Promise<[models.CustomersControllerUpdateResponse](../../models/customerscontrollerupdateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |

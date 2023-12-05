@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as components from "../models/components";
-import * as errors from "../models/errors";
-import * as operations from "../models/operations";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -21,7 +19,7 @@ export class Customers {
      */
     async customersControllerFindAll(
         config?: AxiosRequestConfig
-    ): Promise<operations.CustomersControllerFindAllResponse> {
+    ): Promise<models.CustomersControllerFindAllResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -33,7 +31,7 @@ export class Customers {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -56,8 +54,8 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CustomersControllerFindAllResponse =
-            new operations.CustomersControllerFindAllResponse({
+        const res: models.CustomersControllerFindAllResponse =
+            new models.CustomersControllerFindAllResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -65,10 +63,8 @@ export class Customers {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -86,11 +82,11 @@ export class Customers {
      * Create a new customer.
      */
     async customersControllerCreate(
-        req: components.CreateCustomerDto,
+        req: models.CreateCustomerDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.CustomersControllerCreateResponse> {
+    ): Promise<models.CustomersControllerCreateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new components.CreateCustomerDto(req);
+            req = new models.CreateCustomerDto(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -114,7 +110,7 @@ export class Customers {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -143,8 +139,8 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CustomersControllerCreateResponse =
-            new operations.CustomersControllerCreateResponse({
+        const res: models.CustomersControllerCreateResponse =
+            new models.CustomersControllerCreateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -152,10 +148,8 @@ export class Customers {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -169,8 +163,8 @@ export class Customers {
     async customersControllerRemove(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CustomersControllerRemoveResponse> {
-        const req = new operations.CustomersControllerRemoveRequest({
+    ): Promise<models.CustomersControllerRemoveResponse> {
+        const req = new models.CustomersControllerRemoveRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -184,7 +178,7 @@ export class Customers {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -207,8 +201,8 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CustomersControllerRemoveResponse =
-            new operations.CustomersControllerRemoveResponse({
+        const res: models.CustomersControllerRemoveResponse =
+            new models.CustomersControllerRemoveResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -216,10 +210,8 @@ export class Customers {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -236,8 +228,8 @@ export class Customers {
     async customersControllerFindOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CustomersControllerFindOneResponse> {
-        const req = new operations.CustomersControllerFindOneRequest({
+    ): Promise<models.CustomersControllerFindOneResponse> {
+        const req = new models.CustomersControllerFindOneRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -251,7 +243,7 @@ export class Customers {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -274,8 +266,8 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CustomersControllerFindOneResponse =
-            new operations.CustomersControllerFindOneResponse({
+        const res: models.CustomersControllerFindOneResponse =
+            new models.CustomersControllerFindOneResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -283,10 +275,8 @@ export class Customers {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -299,10 +289,10 @@ export class Customers {
 
     async customersControllerUpdate(
         id: string,
-        updateCustomerDto: components.UpdateCustomerDto,
+        updateCustomerDto: models.UpdateCustomerDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.CustomersControllerUpdateResponse> {
-        const req = new operations.CustomersControllerUpdateRequest({
+    ): Promise<models.CustomersControllerUpdateResponse> {
+        const req = new models.CustomersControllerUpdateRequest({
             id: id,
             updateCustomerDto: updateCustomerDto,
         });
@@ -331,7 +321,7 @@ export class Customers {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -360,8 +350,8 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CustomersControllerUpdateResponse =
-            new operations.CustomersControllerUpdateResponse({
+        const res: models.CustomersControllerUpdateResponse =
+            new models.CustomersControllerUpdateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -369,10 +359,8 @@ export class Customers {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,

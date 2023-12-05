@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as components from "../models/components";
-import * as errors from "../models/errors";
-import * as operations from "../models/operations";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -21,7 +19,7 @@ export class CheckoutSessionsAPI {
      */
     async checkoutSessionsControllerFindAll(
         config?: AxiosRequestConfig
-    ): Promise<operations.CheckoutSessionsControllerFindAllResponse> {
+    ): Promise<models.CheckoutSessionsControllerFindAllResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -33,7 +31,7 @@ export class CheckoutSessionsAPI {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -56,8 +54,8 @@ export class CheckoutSessionsAPI {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CheckoutSessionsControllerFindAllResponse =
-            new operations.CheckoutSessionsControllerFindAllResponse({
+        const res: models.CheckoutSessionsControllerFindAllResponse =
+            new models.CheckoutSessionsControllerFindAllResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -70,12 +68,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.BadRequestResponse
+                        models.BadRequestResponse
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.BadRequestResponse(err);
+                    throw new models.BadRequestResponse(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -87,12 +85,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.UnauthorizedException
+                        models.UnauthorizedException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.UnauthorizedException(err);
+                    throw new models.UnauthorizedException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -102,11 +100,11 @@ export class CheckoutSessionsAPI {
                 break;
             case httpRes?.status == 404:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
-                    const err = utils.objectToClass(JSON.parse(decodedRes), errors.ErrorT);
+                    const err = utils.objectToClass(JSON.parse(decodedRes), models.ErrorT);
                     err.rawResponse = httpRes;
-                    throw new errors.ErrorT(err);
+                    throw new models.ErrorT(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -114,9 +112,8 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case httpRes?.status == 500:
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -131,11 +128,11 @@ export class CheckoutSessionsAPI {
      * Create a new checkout session.
      */
     async checkoutSessionsControllerCreate(
-        req: components.CreateCheckoutSessionDto,
+        req: models.CreateCheckoutSessionDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.CheckoutSessionsControllerCreateResponse> {
+    ): Promise<models.CheckoutSessionsControllerCreateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new components.CreateCheckoutSessionDto(req);
+            req = new models.CreateCheckoutSessionDto(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -159,7 +156,7 @@ export class CheckoutSessionsAPI {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -188,8 +185,8 @@ export class CheckoutSessionsAPI {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CheckoutSessionsControllerCreateResponse =
-            new operations.CheckoutSessionsControllerCreateResponse({
+        const res: models.CheckoutSessionsControllerCreateResponse =
+            new models.CheckoutSessionsControllerCreateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -202,12 +199,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.BadRequestResponse
+                        models.BadRequestResponse
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.BadRequestResponse(err);
+                    throw new models.BadRequestResponse(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -219,12 +216,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.UnauthorizedException
+                        models.UnauthorizedException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.UnauthorizedException(err);
+                    throw new models.UnauthorizedException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -236,12 +233,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.NotFoundException
+                        models.NotFoundException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.NotFoundException(err);
+                    throw new models.NotFoundException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -249,9 +246,8 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case httpRes?.status == 500:
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     decodedRes,
@@ -268,8 +264,8 @@ export class CheckoutSessionsAPI {
     async checkoutSessionsControllerFindOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CheckoutSessionsControllerFindOneResponse> {
-        const req = new operations.CheckoutSessionsControllerFindOneRequest({
+    ): Promise<models.CheckoutSessionsControllerFindOneResponse> {
+        const req = new models.CheckoutSessionsControllerFindOneRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -283,7 +279,7 @@ export class CheckoutSessionsAPI {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -306,8 +302,8 @@ export class CheckoutSessionsAPI {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CheckoutSessionsControllerFindOneResponse =
-            new operations.CheckoutSessionsControllerFindOneResponse({
+        const res: models.CheckoutSessionsControllerFindOneResponse =
+            new models.CheckoutSessionsControllerFindOneResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -316,16 +312,23 @@ export class CheckoutSessionsAPI {
         switch (true) {
             case httpRes?.status == 200:
                 break;
+            case [400, 500].includes(httpRes?.status):
+                throw new models.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.UnauthorizedException
+                        models.UnauthorizedException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.UnauthorizedException(err);
+                    throw new models.UnauthorizedException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -337,12 +340,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.NotFoundException
+                        models.NotFoundException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.NotFoundException(err);
+                    throw new models.NotFoundException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -350,14 +353,6 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
         }
 
         return res;
@@ -369,8 +364,8 @@ export class CheckoutSessionsAPI {
     async checkoutSessionsControllerExpire(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.CheckoutSessionsControllerExpireResponse> {
-        const req = new operations.CheckoutSessionsControllerExpireRequest({
+    ): Promise<models.CheckoutSessionsControllerExpireResponse> {
+        const req = new models.CheckoutSessionsControllerExpireRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -388,7 +383,7 @@ export class CheckoutSessionsAPI {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -411,8 +406,8 @@ export class CheckoutSessionsAPI {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CheckoutSessionsControllerExpireResponse =
-            new operations.CheckoutSessionsControllerExpireResponse({
+        const res: models.CheckoutSessionsControllerExpireResponse =
+            new models.CheckoutSessionsControllerExpireResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -421,16 +416,23 @@ export class CheckoutSessionsAPI {
         switch (true) {
             case httpRes?.status == 200:
                 break;
+            case [400, 500].includes(httpRes?.status):
+                throw new models.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
             case httpRes?.status == 401:
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.UnauthorizedException
+                        models.UnauthorizedException
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.UnauthorizedException(err);
+                    throw new models.UnauthorizedException(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -442,12 +444,12 @@ export class CheckoutSessionsAPI {
                 if (utils.matchContentType(responseContentType, `application/json`)) {
                     const err = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        errors.BadRequestResponse
+                        models.BadRequestResponse
                     );
                     err.rawResponse = httpRes;
-                    throw new errors.BadRequestResponse(err);
+                    throw new models.BadRequestResponse(err);
                 } else {
-                    throw new errors.SDKError(
+                    throw new models.SDKError(
                         "unknown content-type received: " + responseContentType,
                         httpRes.status,
                         decodedRes,
@@ -455,14 +457,6 @@ export class CheckoutSessionsAPI {
                     );
                 }
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
         }
 
         return res;

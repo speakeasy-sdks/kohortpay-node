@@ -3,9 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
-import * as components from "../models/components";
-import * as errors from "../models/errors";
-import * as operations from "../models/operations";
+import * as models from "../models";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -21,7 +19,7 @@ export class PaymentGroups {
      */
     async paymentGroupsControllerFindAll(
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerFindAllResponse> {
+    ): Promise<models.PaymentGroupsControllerFindAllResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -33,7 +31,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -56,8 +54,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerFindAllResponse =
-            new operations.PaymentGroupsControllerFindAllResponse({
+        const res: models.PaymentGroupsControllerFindAllResponse =
+            new models.PaymentGroupsControllerFindAllResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -65,9 +63,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -82,11 +79,11 @@ export class PaymentGroups {
      * Create a new payment group
      */
     async paymentGroupsControllerCreate(
-        req: components.CreatePaymentGroupDto,
+        req: models.CreatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerCreateResponse> {
+    ): Promise<models.PaymentGroupsControllerCreateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new components.CreatePaymentGroupDto(req);
+            req = new models.CreatePaymentGroupDto(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -110,7 +107,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -139,8 +136,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerCreateResponse =
-            new operations.PaymentGroupsControllerCreateResponse({
+        const res: models.PaymentGroupsControllerCreateResponse =
+            new models.PaymentGroupsControllerCreateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -148,10 +145,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 201:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -168,8 +163,8 @@ export class PaymentGroups {
     async paymentGroupsControllerFindOne(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerFindOneResponse> {
-        const req = new operations.PaymentGroupsControllerFindOneRequest({
+    ): Promise<models.PaymentGroupsControllerFindOneResponse> {
+        const req = new models.PaymentGroupsControllerFindOneRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -183,7 +178,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -206,8 +201,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerFindOneResponse =
-            new operations.PaymentGroupsControllerFindOneResponse({
+        const res: models.PaymentGroupsControllerFindOneResponse =
+            new models.PaymentGroupsControllerFindOneResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -215,10 +210,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -234,10 +227,10 @@ export class PaymentGroups {
      */
     async paymentGroupsControllerUpdate(
         id: string,
-        updatePaymentGroupDto: components.UpdatePaymentGroupDto,
+        updatePaymentGroupDto: models.UpdatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerUpdateResponse> {
-        const req = new operations.PaymentGroupsControllerUpdateRequest({
+    ): Promise<models.PaymentGroupsControllerUpdateResponse> {
+        const req = new models.PaymentGroupsControllerUpdateRequest({
             id: id,
             updatePaymentGroupDto: updatePaymentGroupDto,
         });
@@ -266,7 +259,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -295,8 +288,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerUpdateResponse =
-            new operations.PaymentGroupsControllerUpdateResponse({
+        const res: models.PaymentGroupsControllerUpdateResponse =
+            new models.PaymentGroupsControllerUpdateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -304,10 +297,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -324,8 +315,8 @@ export class PaymentGroups {
     async paymentGroupsControllerParticipants(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerParticipantsResponse> {
-        const req = new operations.PaymentGroupsControllerParticipantsRequest({
+    ): Promise<models.PaymentGroupsControllerParticipantsResponse> {
+        const req = new models.PaymentGroupsControllerParticipantsRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -343,7 +334,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -366,8 +357,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerParticipantsResponse =
-            new operations.PaymentGroupsControllerParticipantsResponse({
+        const res: models.PaymentGroupsControllerParticipantsResponse =
+            new models.PaymentGroupsControllerParticipantsResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -375,10 +366,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 404 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -395,8 +384,8 @@ export class PaymentGroups {
     async paymentGroupsControllerCancel(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerCancelResponse> {
-        const req = new operations.PaymentGroupsControllerCancelRequest({
+    ): Promise<models.PaymentGroupsControllerCancelResponse> {
+        const req = new models.PaymentGroupsControllerCancelRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -410,7 +399,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -433,8 +422,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerCancelResponse =
-            new operations.PaymentGroupsControllerCancelResponse({
+        const res: models.PaymentGroupsControllerCancelResponse =
+            new models.PaymentGroupsControllerCancelResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -442,10 +431,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -462,8 +449,8 @@ export class PaymentGroups {
     async paymentGroupsControllerExpire(
         id: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerExpireResponse> {
-        const req = new operations.PaymentGroupsControllerExpireRequest({
+    ): Promise<models.PaymentGroupsControllerExpireResponse> {
+        const req = new models.PaymentGroupsControllerExpireRequest({
             id: id,
         });
         const baseURL: string = utils.templateUrl(
@@ -477,7 +464,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
@@ -500,8 +487,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerExpireResponse =
-            new operations.PaymentGroupsControllerExpireResponse({
+        const res: models.PaymentGroupsControllerExpireResponse =
+            new models.PaymentGroupsControllerExpireResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -509,10 +496,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,
@@ -528,10 +513,10 @@ export class PaymentGroups {
      */
     async paymentGroupsControllerValidate(
         id: string,
-        validatePaymentGroupDto: components.ValidatePaymentGroupDto,
+        validatePaymentGroupDto: models.ValidatePaymentGroupDto,
         config?: AxiosRequestConfig
-    ): Promise<operations.PaymentGroupsControllerValidateResponse> {
-        const req = new operations.PaymentGroupsControllerValidateRequest({
+    ): Promise<models.PaymentGroupsControllerValidateResponse> {
+        const req = new models.PaymentGroupsControllerValidateRequest({
             id: id,
             validatePaymentGroupDto: validatePaymentGroupDto,
         });
@@ -564,7 +549,7 @@ export class PaymentGroups {
             globalSecurity = await globalSecurity();
         }
         if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new components.Security(globalSecurity);
+            globalSecurity = new models.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
@@ -593,8 +578,8 @@ export class PaymentGroups {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.PaymentGroupsControllerValidateResponse =
-            new operations.PaymentGroupsControllerValidateResponse({
+        const res: models.PaymentGroupsControllerValidateResponse =
+            new models.PaymentGroupsControllerValidateResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
@@ -602,10 +587,8 @@ export class PaymentGroups {
         switch (true) {
             case httpRes?.status == 200:
                 break;
-            case httpRes?.status == 400 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
+            case [400, 401, 404, 500].includes(httpRes?.status):
+                throw new models.SDKError(
                     "API error occurred",
                     httpRes.status,
                     httpRes?.data,

@@ -41,15 +41,15 @@ run();
 
 ### Response
 
-**Promise<[operations.CheckoutSessionsControllerFindAllResponse](../../models/operations/checkoutsessionscontrollerfindallresponse.md)>**
+**Promise<[models.CheckoutSessionsControllerFindAllResponse](../../models/checkoutsessionscontrollerfindallresponse.md)>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.BadRequestResponse    | 400                          | application/json             |
-| errors.UnauthorizedException | 401                          | application/json             |
-| errors.ErrorT                | 404                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| models.BadRequestResponse    | 400                          | application/json             |
+| models.UnauthorizedException | 401                          | application/json             |
+| models.ErrorT                | 404                          | application/json             |
+| models.SDKError              | 400-600                      | */*                          |
 
 ## checkoutSessionsControllerCreate
 
@@ -98,23 +98,23 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [components.CreateCheckoutSessionDto](../../models/components/createcheckoutsessiondto.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [models.CreateCheckoutSessionDto](../../models/createcheckoutsessiondto.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| `config`                                                                    | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                | :heavy_minus_sign:                                                          | Available config options for making requests.                               |
 
 
 ### Response
 
-**Promise<[operations.CheckoutSessionsControllerCreateResponse](../../models/operations/checkoutsessionscontrollercreateresponse.md)>**
+**Promise<[models.CheckoutSessionsControllerCreateResponse](../../models/checkoutsessionscontrollercreateresponse.md)>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.BadRequestResponse    | 400                          | application/json             |
-| errors.UnauthorizedException | 401                          | application/json             |
-| errors.NotFoundException     | 404                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| models.BadRequestResponse    | 400                          | application/json             |
+| models.UnauthorizedException | 401                          | application/json             |
+| models.NotFoundException     | 404                          | application/json             |
+| models.SDKError              | 400-600                      | */*                          |
 
 ## checkoutSessionsControllerFindOne
 
@@ -123,8 +123,7 @@ Retrieve a checkout session by ID for the current organization and livemode.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CheckoutSessionsControllerFindOneRequest } from "kohortpay-node/dist/models/operations";
+import { CheckoutSessionsControllerFindOneRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -152,14 +151,14 @@ run();
 
 ### Response
 
-**Promise<[operations.CheckoutSessionsControllerFindOneResponse](../../models/operations/checkoutsessionscontrollerfindoneresponse.md)>**
+**Promise<[models.CheckoutSessionsControllerFindOneResponse](../../models/checkoutsessionscontrollerfindoneresponse.md)>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.UnauthorizedException | 401                          | application/json             |
-| errors.NotFoundException     | 404                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| models.UnauthorizedException | 401                          | application/json             |
+| models.NotFoundException     | 404                          | application/json             |
+| models.SDKError              | 400-600                      | */*                          |
 
 ## checkoutSessionsControllerExpire
 
@@ -168,8 +167,7 @@ Expire a checkout session by ID for the current organization and livemode.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CheckoutSessionsControllerExpireRequest } from "kohortpay-node/dist/models/operations";
+import { CheckoutSessionsControllerExpireRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -197,11 +195,11 @@ run();
 
 ### Response
 
-**Promise<[operations.CheckoutSessionsControllerExpireResponse](../../models/operations/checkoutsessionscontrollerexpireresponse.md)>**
+**Promise<[models.CheckoutSessionsControllerExpireResponse](../../models/checkoutsessionscontrollerexpireresponse.md)>**
 ### Errors
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.UnauthorizedException | 401                          | application/json             |
-| errors.BadRequestResponse    | 404                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| models.UnauthorizedException | 401                          | application/json             |
+| models.BadRequestResponse    | 404                          | application/json             |
+| models.SDKError              | 400-600                      | */*                          |

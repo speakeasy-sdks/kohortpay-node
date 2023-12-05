@@ -45,12 +45,12 @@ run();
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerFindAllResponse](../../models/operations/paymentgroupscontrollerfindallresponse.md)>**
+**Promise<[models.PaymentGroupsControllerFindAllResponse](../../models/paymentgroupscontrollerfindallresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerCreate
 
@@ -83,20 +83,20 @@ run();
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [components.CreatePaymentGroupDto](../../models/components/createpaymentgroupdto.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [models.CreatePaymentGroupDto](../../models/createpaymentgroupdto.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+| `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |
 
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerCreateResponse](../../models/operations/paymentgroupscontrollercreateresponse.md)>**
+**Promise<[models.PaymentGroupsControllerCreateResponse](../../models/paymentgroupscontrollercreateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerFindOne
 
@@ -105,8 +105,7 @@ Retrieve a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentGroupsControllerFindOneRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay, PaymentGroupsControllerFindOneRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -134,12 +133,12 @@ run();
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerFindOneResponse](../../models/operations/paymentgroupscontrollerfindoneresponse.md)>**
+**Promise<[models.PaymentGroupsControllerFindOneResponse](../../models/paymentgroupscontrollerfindoneresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerUpdate
 
@@ -148,9 +147,12 @@ Update a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { UpdatePaymentGroupDto, UpdatePaymentGroupDtoMetadata } from "kohortpay-node/dist/models/components";
-import { PaymentGroupsControllerUpdateRequest } from "kohortpay-node/dist/models/operations";
+import {
+  KohortPay,
+  PaymentGroupsControllerUpdateRequest,
+  UpdatePaymentGroupDto,
+  UpdatePaymentGroupDtoMetadata,
+} from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -173,21 +175,21 @@ run();
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `id`                                                                                 | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `updatePaymentGroupDto`                                                              | [components.UpdatePaymentGroupDto](../../models/components/updatepaymentgroupdto.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `updatePaymentGroupDto`                                            | [models.UpdatePaymentGroupDto](../models/updatepaymentgroupdto.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
 
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerUpdateResponse](../../models/operations/paymentgroupscontrollerupdateresponse.md)>**
+**Promise<[models.PaymentGroupsControllerUpdateResponse](../../models/paymentgroupscontrollerupdateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerParticipants
 
@@ -196,8 +198,7 @@ Retrieve participants of a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentGroupsControllerParticipantsRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay, PaymentGroupsControllerParticipantsRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -225,12 +226,12 @@ run();
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerParticipantsResponse](../../models/operations/paymentgroupscontrollerparticipantsresponse.md)>**
+**Promise<[models.PaymentGroupsControllerParticipantsResponse](../../models/paymentgroupscontrollerparticipantsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerCancel
 
@@ -239,8 +240,7 @@ Cancel a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentGroupsControllerCancelRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay, PaymentGroupsControllerCancelRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -268,12 +268,12 @@ run();
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerCancelResponse](../../models/operations/paymentgroupscontrollercancelresponse.md)>**
+**Promise<[models.PaymentGroupsControllerCancelResponse](../../models/paymentgroupscontrollercancelresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerExpire
 
@@ -282,8 +282,7 @@ Expire a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentGroupsControllerExpireRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay, PaymentGroupsControllerExpireRequest } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -311,12 +310,12 @@ run();
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerExpireResponse](../../models/operations/paymentgroupscontrollerexpireresponse.md)>**
+**Promise<[models.PaymentGroupsControllerExpireResponse](../../models/paymentgroupscontrollerexpireresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |
 
 ## paymentGroupsControllerValidate
 
@@ -325,9 +324,7 @@ Validate a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { ValidatePaymentGroupDto } from "kohortpay-node/dist/models/components";
-import { PaymentGroupsControllerValidateRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay, PaymentGroupsControllerValidateRequest, ValidatePaymentGroupDto } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
@@ -350,18 +347,18 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `id`                                                                                     | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `validatePaymentGroupDto`                                                                | [components.ValidatePaymentGroupDto](../../models/components/validatepaymentgroupdto.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `validatePaymentGroupDto`                                              | [models.ValidatePaymentGroupDto](../models/validatepaymentgroupdto.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
 
 
 ### Response
 
-**Promise<[operations.PaymentGroupsControllerValidateResponse](../../models/operations/paymentgroupscontrollervalidateresponse.md)>**
+**Promise<[models.PaymentGroupsControllerValidateResponse](../../models/paymentgroupscontrollervalidateresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| models.SDKError | 400-600         | */*             |

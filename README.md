@@ -101,10 +101,10 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 | Error Object                 | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
-| errors.BadRequestResponse    | 400                          | application/json             |
-| errors.UnauthorizedException | 401                          | application/json             |
-| errors.ErrorT                | 404                          | application/json             |
-| errors.SDKError              | 400-600                      | */*                          |
+| models.BadRequestResponse    | 400                          | application/json             |
+| models.UnauthorizedException | 401                          | application/json             |
+| models.ErrorT                | 404                          | application/json             |
+| models.SDKError              | 400-600                      | */*                          |
 
 Example
 
@@ -120,16 +120,16 @@ async function run() {
     try {
         res = await sdk.checkoutSessionsAPI.checkoutSessionsControllerFindAll();
     } catch (err) {
-        if (err instanceof errors.BadRequestResponse) {
+        if (err instanceof models.BadRequestResponse) {
             console.error(err); // handle exception
             throw err;
-        } else if (err instanceof errors.UnauthorizedException) {
+        } else if (err instanceof models.UnauthorizedException) {
             console.error(err); // handle exception
             throw err;
-        } else if (err instanceof errors.ErrorT) {
+        } else if (err instanceof models.ErrorT) {
             console.error(err); // handle exception
             throw err;
-        } else if (err instanceof errors.SDKError) {
+        } else if (err instanceof models.SDKError) {
             console.error(err); // handle exception
             throw err;
         }
@@ -257,11 +257,11 @@ run();
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```typescript
-import { KohortPay } from "kohortpay-node";
 import {
+    KohortPay,
     PaymentIntentsControllerCancelRequest,
     PaymentIntentsControllerCancelSecurity,
-} from "kohortpay-node/dist/models/operations";
+} from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay();

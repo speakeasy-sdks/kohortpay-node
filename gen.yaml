@@ -1,25 +1,26 @@
 configVersion: 1.0.0
 management:
-  docChecksum: b9c3a1dbf786d9a6f72d980701876175
+  docChecksum: 2419bcb8cb865d46a0bb5915a7fd0a9c
   docVersion: 0.1.0
-  speakeasyVersion: 1.125.1
-  generationVersion: 2.210.3
+  speakeasyVersion: 1.125.2
+  generationVersion: 2.210.6
 generation:
   comments: {}
   sdkClassName: kohortPay
-  repoURL: https://github.com/kohortpay/kohortpay-php.git
+  repoURL: https://github.com/kohortpay/kohortpay-node.git
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
 features:
   typescript:
     core: 3.1.4
+    errors: 2.81.8
     flattening: 2.81.1
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
 typescript:
-  version: 0.1.4
+  version: 0.1.5
   author: kohortpay-sdk
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
