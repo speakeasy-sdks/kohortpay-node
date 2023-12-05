@@ -19,10 +19,9 @@ features:
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
 typescript:
-  clientServerStatusCodesAsErrors: false
   version: 0.1.4
   author: kohortpay-sdk
-  clientServerStatusCodesAsErrors: true
+  clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
   imports:
     option: openapi
