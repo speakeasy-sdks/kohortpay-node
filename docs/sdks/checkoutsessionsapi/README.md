@@ -15,7 +15,7 @@ Retrieve all checkout sessions for the current organization and livemode.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -58,7 +58,7 @@ Create a new checkout session.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -123,8 +123,8 @@ Retrieve a checkout session by ID for the current organization and livemode.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CheckoutSessionsControllerFindOneRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { CheckoutSessionsControllerFindOneRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -168,8 +168,8 @@ Expire a checkout session by ID for the current organization and livemode.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { CheckoutSessionsControllerExpireRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { CheckoutSessionsControllerExpireRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({

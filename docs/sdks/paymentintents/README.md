@@ -15,7 +15,7 @@ Retrieve all Payment Intents
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -55,8 +55,8 @@ Create a new Payment Intent
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { Status } from "kohortpay-node/dist/models/components";
+import { KohortPay } from "kohortpay";
+import { Status } from "kohortpay/dist/models/components";
 
 async function run() {
   const sdk = new KohortPay({
@@ -103,8 +103,8 @@ Retrieve a Payment Intent by ID
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentIntentsControllerFindOneRequest } from "kohortpay-node/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentIntentsControllerFindOneRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -146,8 +146,8 @@ Cancel a Payment Intent by ID
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
-import { PaymentIntentsControllerCancelRequest, PaymentIntentsControllerCancelSecurity } from "kohortpay-node/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentIntentsControllerCancelRequest, PaymentIntentsControllerCancelSecurity } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay();
