@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 7ebca702ce6b4da96308caf93011f68e
+  docChecksum: 6ae077b3117ceb8294111d10d6d48947
   docVersion: 0.1.0
   speakeasyVersion: 1.125.1
   generationVersion: 2.210.3
@@ -19,7 +19,7 @@ features:
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
 typescript:
-  version: 0.1.0
+  version: 0.1.1
   author: kohortpay-sdk
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -32,6 +32,9 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
+  installationURL: https://github.com/kohortpay/kohortpay-node
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: kohortpay
+  published: true
+  repoSubDirectory: .

@@ -16,7 +16,7 @@ find All customers of an organization.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -56,7 +56,7 @@ Create a new customer.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -117,8 +117,8 @@ run();
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { CustomersControllerRemoveRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { CustomersControllerRemoveRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -160,8 +160,8 @@ find All customers of an organization.
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { CustomersControllerFindOneRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { CustomersControllerFindOneRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -201,9 +201,9 @@ run();
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { UpdateCustomerDto } from "kohortPay/dist/models/components";
-import { CustomersControllerUpdateRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { UpdateCustomerDto } from "kohortpay/dist/models/components";
+import { CustomersControllerUpdateRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({

@@ -22,13 +22,13 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 ### NPM
 
 ```bash
-npm add kohortPay
+npm add kohortpay
 ```
 
 ### Yarn
 
 ```bash
-yarn add kohortPay
+yarn add kohortpay
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -38,7 +38,7 @@ yarn add kohortPay
 ### Example
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({
@@ -109,7 +109,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 Example
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({
@@ -154,18 +154,16 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://api.kohortpay.dev` | None |
-| 1 | `http://localhost:3000/` | None |
-| 2 | `https://api.kohortpay.com` | None |
+| 0 | `https://api.kohortpay.com` | None |
 
 #### Example
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({
-        serverIdx: 2,
+        serverIdx: 0,
         bearer: "",
     });
 
@@ -185,11 +183,11 @@ run();
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({
-        serverURL: "https://api.kohortpay.dev",
+        serverURL: "https://api.kohortpay.com",
         bearer: "",
     });
 
@@ -213,7 +211,7 @@ The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-import { kohortPay } from "KohortPay";
+import { kohortpay } from "KohortPay";
 import axios from "axios";
 
 const httpClient = axios.create({
@@ -237,7 +235,7 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({
@@ -259,11 +257,11 @@ run();
 
 Some operations in this SDK require the security scheme to be specified at the request level. For example:
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 import {
     PaymentIntentsControllerCancelRequest,
     PaymentIntentsControllerCancelSecurity,
-} from "kohortPay/dist/models/operations";
+} from "kohortpay/dist/models/operations";
 
 async function run() {
     const sdk = new KohortPay();

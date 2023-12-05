@@ -19,7 +19,7 @@ Retrieve all payment groups
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -59,7 +59,7 @@ Create a new payment group
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
   const sdk = new KohortPay({
@@ -70,7 +70,7 @@ async function run() {
     customerId: "cus_IzkjlvAhdjzjht3",
     paymentIntentId: "pi_1JYLo8KerLxWZaQtys6ZQ1xR",
     metadata: {},
-    expiresAt: new Date("2023-11-30T14:37:09.963Z"),
+    expiresAt: new Date("2023-12-05T14:59:36.611Z"),
   });
 
   if (res.statusCode == 200) {
@@ -105,8 +105,8 @@ Retrieve a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { PaymentGroupsControllerFindOneRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentGroupsControllerFindOneRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -148,9 +148,9 @@ Update a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { UpdatePaymentGroupDto, UpdatePaymentGroupDtoMetadata } from "kohortPay/dist/models/components";
-import { PaymentGroupsControllerUpdateRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { UpdatePaymentGroupDto, UpdatePaymentGroupDtoMetadata } from "kohortpay/dist/models/components";
+import { PaymentGroupsControllerUpdateRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -196,8 +196,8 @@ Retrieve participants of a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { PaymentGroupsControllerParticipantsRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentGroupsControllerParticipantsRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -239,8 +239,8 @@ Cancel a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { PaymentGroupsControllerCancelRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentGroupsControllerCancelRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -282,8 +282,8 @@ Expire a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { PaymentGroupsControllerExpireRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { PaymentGroupsControllerExpireRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({
@@ -325,9 +325,9 @@ Validate a payment group by id
 ### Example Usage
 
 ```typescript
-import { KohortPay } from "kohortPay";
-import { ValidatePaymentGroupDto } from "kohortPay/dist/models/components";
-import { PaymentGroupsControllerValidateRequest } from "kohortPay/dist/models/operations";
+import { KohortPay } from "kohortpay";
+import { ValidatePaymentGroupDto } from "kohortpay/dist/models/components";
+import { PaymentGroupsControllerValidateRequest } from "kohortpay/dist/models/operations";
 
 async function run() {
   const sdk = new KohortPay({

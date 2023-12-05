@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { KohortPay } from "kohortPay";
+import { KohortPay } from "kohortpay";
 
 async function run() {
     const sdk = new KohortPay({

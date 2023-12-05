@@ -1,7 +1,7 @@
 {
-  "name": "kohortPay",
-  "version": "0.1.0",
-  "author": "KohortPay",
+  "name": "kohortpay",
+  "version": "0.1.1",
+  "author": "kohortpay-sdk",
   "scripts": {
     "prepare": "tsc --build",
     "check:tsc": "tsc --noEmit --skipLibCheck",
