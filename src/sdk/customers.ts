@@ -15,67 +15,6 @@ export class Customers {
     }
 
     /**
-     * find All customers of an organization.
-     *
-     * @remarks
-     * find All customers of an organization.
-     */
-    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllCustomersResponse> {
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const operationUrl: string = baseURL.replace(/\/$/, "") + "/customers";
-        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
-        }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new models.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        headers["Accept"] = "*/*";
-
-        headers["user-agent"] = this.sdkConfiguration.userAgent;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: operationUrl,
-            method: "get",
-            headers: headers,
-            responseType: "arraybuffer",
-            ...config,
-        });
-
-        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: models.FindAllCustomersResponse = new models.FindAllCustomersResponse({
-            statusCode: httpRes.status,
-            contentType: responseContentType,
-            rawResponse: httpRes,
-        });
-        switch (true) {
-            case [200, 400].includes(httpRes?.status):
-                break;
-            case httpRes?.status == 500:
-                throw new models.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    httpRes?.data,
-                    httpRes
-                );
-        }
-
-        return res;
-    }
-
-    /**
      * Create a new customer.
      *
      * @remarks
@@ -160,20 +99,17 @@ export class Customers {
     }
 
     /**
-     * Delete a customer.
+     * find All customers of an organization.
      *
      * @remarks
-     * Delete a customer.
+     * find All customers of an organization.
      */
-    async delete(id: string, config?: AxiosRequestConfig): Promise<models.DeleteCustomerResponse> {
-        const req = new models.DeleteCustomerRequest({
-            id: id,
-        });
+    async findAll(config?: AxiosRequestConfig): Promise<models.FindAllCustomersResponse> {
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const operationUrl: string = utils.generateURL(baseURL, "/customers/{id}", req);
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/customers";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -191,7 +127,7 @@ export class Customers {
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
             url: operationUrl,
-            method: "delete",
+            method: "get",
             headers: headers,
             responseType: "arraybuffer",
             ...config,
@@ -203,7 +139,7 @@ export class Customers {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: models.DeleteCustomerResponse = new models.DeleteCustomerResponse({
+        const res: models.FindAllCustomersResponse = new models.FindAllCustomersResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,
@@ -360,6 +296,70 @@ export class Customers {
         }
 
         const res: models.UpdateCustomerResponse = new models.UpdateCustomerResponse({
+            statusCode: httpRes.status,
+            contentType: responseContentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case [200, 400].includes(httpRes?.status):
+                break;
+            case httpRes?.status == 500:
+                throw new models.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    /**
+     * Delete a customer.
+     *
+     * @remarks
+     * Delete a customer.
+     */
+    async delete(id: string, config?: AxiosRequestConfig): Promise<models.DeleteCustomerResponse> {
+        const req = new models.DeleteCustomerRequest({
+            id: id,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const operationUrl: string = utils.generateURL(baseURL, "/customers/{id}", req);
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new models.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        headers["Accept"] = "*/*";
+
+        headers["user-agent"] = this.sdkConfiguration.userAgent;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: operationUrl,
+            method: "delete",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const responseContentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: models.DeleteCustomerResponse = new models.DeleteCustomerResponse({
             statusCode: httpRes.status,
             contentType: responseContentType,
             rawResponse: httpRes,

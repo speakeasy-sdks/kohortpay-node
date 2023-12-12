@@ -3,54 +3,14 @@
 
 ### Available Operations
 
-* [findAll](#findall) - Retrieve all payment groups
 * [create](#create) - Create a new payment group
+* [findAll](#findall) - Retrieve all payment groups
 * [findOne](#findone) - Retrieve a payment group by id
 * [update](#update) - Update a payment group by id
 * [getParticipants](#getparticipants) - Retrieve participants of a payment group by id
 * [cancel](#cancel) - Cancel a payment group by id
 * [expire](#expire) - Expire a payment group by id
 * [validatePaymentGroup](#validatepaymentgroup) - Validate a payment group by id
-
-## findAll
-
-Retrieve all payment groups
-
-### Example Usage
-
-```typescript
-import { KohortPay } from "kohortpay-node";
-
-async function run() {
-  const sdk = new KohortPay({
-    bearer: "",
-  });
-
-  const res = await sdk.paymentGroups.findAll();
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[models.FindAllPaymentGroupsResponse](../../models/findallpaymentgroupsresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
 
 ## create
 
@@ -63,7 +23,7 @@ import { KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.paymentGroups.create({
@@ -98,6 +58,46 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
+## findAll
+
+Retrieve all payment groups
+
+### Example Usage
+
+```typescript
+import { KohortPay } from "kohortpay-node";
+
+async function run() {
+  const sdk = new KohortPay({
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const res = await sdk.paymentGroups.findAll();
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[models.FindAllPaymentGroupsResponse](../../models/findallpaymentgroupsresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
+
 ## findOne
 
 Retrieve a payment group by id
@@ -109,7 +109,7 @@ import { FindOnePaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -151,7 +151,7 @@ import { KohortPay, UpdatePaymentGroupDto, UpdatePaymentGroupDtoMetadata, Update
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 const updatePaymentGroupDto: UpdatePaymentGroupDto = {
@@ -170,11 +170,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `id`                                                               | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `updatePaymentGroupDto`                                            | [models.UpdatePaymentGroupDto](../models/updatepaymentgroupdto.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `id`                                                                  | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |
+| `updatePaymentGroupDto`                                               | [models.UpdatePaymentGroupDto](../../models/updatepaymentgroupdto.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `config`                                                              | [AxiosRequestConfig](https://axios-http.com/docs/req_config)          | :heavy_minus_sign:                                                    | Available config options for making requests.                         |
 
 
 ### Response
@@ -197,7 +197,7 @@ import { GetParticipantsRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -239,7 +239,7 @@ import { CancelPaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -281,7 +281,7 @@ import { ExpirePaymentGroupRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -323,7 +323,7 @@ import { KohortPay, ValidatePaymentGroupDto, ValidatePaymentGroupRequest } from 
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 const validatePaymentGroupDto: ValidatePaymentGroupDto = {
@@ -342,11 +342,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `validatePaymentGroupDto`                                              | [models.ValidatePaymentGroupDto](../models/validatepaymentgroupdto.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `config`                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)           | :heavy_minus_sign:                                                     | Available config options for making requests.                          |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `id`                                                                      | *string*                                                                  | :heavy_check_mark:                                                        | N/A                                                                       |
+| `validatePaymentGroupDto`                                                 | [models.ValidatePaymentGroupDto](../../models/validatepaymentgroupdto.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `config`                                                                  | [AxiosRequestConfig](https://axios-http.com/docs/req_config)              | :heavy_minus_sign:                                                        | Available config options for making requests.                             |
 
 
 ### Response

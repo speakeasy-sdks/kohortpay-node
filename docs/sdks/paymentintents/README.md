@@ -3,50 +3,10 @@
 
 ### Available Operations
 
-* [findAll](#findall) - Retrieve all Payment Intents
 * [create](#create) - Create a new Payment Intent
+* [findAll](#findall) - Retrieve all Payment Intents
 * [findOne](#findone) - Retrieve a Payment Intent by ID
 * [cancel](#cancel) - Cancel a Payment Intent by ID
-
-## findAll
-
-Retrieve all Payment Intents
-
-### Example Usage
-
-```typescript
-import { KohortPay } from "kohortpay-node";
-
-async function run() {
-  const sdk = new KohortPay({
-    bearer: "",
-  });
-
-  const res = await sdk.paymentIntents.findAll();
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[models.FindAllPaymentIntentsResponse](../../models/findallpaymentintentsresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
 
 ## create
 
@@ -59,7 +19,7 @@ import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.paymentIntents.create({
@@ -95,6 +55,46 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
+## findAll
+
+Retrieve all Payment Intents
+
+### Example Usage
+
+```typescript
+import { KohortPay } from "kohortpay-node";
+
+async function run() {
+  const sdk = new KohortPay({
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const res = await sdk.paymentIntents.findAll();
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[models.FindAllPaymentIntentsResponse](../../models/findallpaymentintentsresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
+
 ## findOne
 
 Retrieve a Payment Intent by ID
@@ -106,7 +106,7 @@ import { FindOnePaymentIntentRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -150,7 +150,7 @@ async function run() {
   const sdk = new KohortPay();
 const id: string = "string";
 const operationSecurity: CancelPaymentIntentSecurity = {
-  bearer: "",
+  bearer: "<YOUR_BEARER_TOKEN_HERE>",
 };
 
   const res = await sdk.paymentIntents.cancel(operationSecurity, id);

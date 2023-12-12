@@ -31,14 +31,20 @@ yarn add kohortpay-node
 ### Example
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.paymentIntents.findAll();
+    const res = await sdk.paymentIntents.create({
+        amount: 5000,
+        checkoutSessionId: "cs_1abc2def3ghi",
+        customerId: "cus_1abc2def3ghi",
+        metadata: {},
+        status: Status.RequiresPaymentMethod,
+    });
 
     if (res.statusCode == 200) {
         // handle response
@@ -55,15 +61,15 @@ run();
 
 ### [paymentIntents](docs/sdks/paymentintents/README.md)
 
-* [findAll](docs/sdks/paymentintents/README.md#findall) - Retrieve all Payment Intents
 * [create](docs/sdks/paymentintents/README.md#create) - Create a new Payment Intent
+* [findAll](docs/sdks/paymentintents/README.md#findall) - Retrieve all Payment Intents
 * [findOne](docs/sdks/paymentintents/README.md#findone) - Retrieve a Payment Intent by ID
 * [cancel](docs/sdks/paymentintents/README.md#cancel) - Cancel a Payment Intent by ID
 
 ### [paymentGroups](docs/sdks/paymentgroups/README.md)
 
-* [findAll](docs/sdks/paymentgroups/README.md#findall) - Retrieve all payment groups
 * [create](docs/sdks/paymentgroups/README.md#create) - Create a new payment group
+* [findAll](docs/sdks/paymentgroups/README.md#findall) - Retrieve all payment groups
 * [findOne](docs/sdks/paymentgroups/README.md#findone) - Retrieve a payment group by id
 * [update](docs/sdks/paymentgroups/README.md#update) - Update a payment group by id
 * [getParticipants](docs/sdks/paymentgroups/README.md#getparticipants) - Retrieve participants of a payment group by id
@@ -73,16 +79,16 @@ run();
 
 ### [customers](docs/sdks/customers/README.md)
 
-* [findAll](docs/sdks/customers/README.md#findall) - find All customers of an organization.
 * [create](docs/sdks/customers/README.md#create) - Create a new customer.
-* [delete](docs/sdks/customers/README.md#delete) - Delete a customer.
+* [findAll](docs/sdks/customers/README.md#findall) - find All customers of an organization.
 * [findOne](docs/sdks/customers/README.md#findone) - find All customers of an organization.
 * [updateCustomer](docs/sdks/customers/README.md#updatecustomer) - Update a customer.
+* [delete](docs/sdks/customers/README.md#delete) - Delete a customer.
 
 ### [checkoutSessions](docs/sdks/checkoutsessions/README.md)
 
-* [findAll](docs/sdks/checkoutsessions/README.md#findall) - Retrieve all checkout sessions for the current organization and livemode.
 * [create](docs/sdks/checkoutsessions/README.md#create) - Create a new checkout session.
+* [findAll](docs/sdks/checkoutsessions/README.md#findall) - Retrieve all checkout sessions for the current organization and livemode.
 * [findOne](docs/sdks/checkoutsessions/README.md#findone) - Retrieve a checkout session by ID for the current organization and livemode.
 * [expire](docs/sdks/checkoutsessions/README.md#expire) - Expire a checkout session by ID for the current organization and livemode.
 <!-- End Available Resources and Operations [operations] -->
@@ -99,16 +105,22 @@ Handling errors in this SDK should largely match your expectations.  All operati
 Example
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
     let res;
     try {
-        res = await sdk.paymentIntents.findAll();
+        res = await sdk.paymentIntents.create({
+            amount: 5000,
+            checkoutSessionId: "cs_1abc2def3ghi",
+            customerId: "cus_1abc2def3ghi",
+            metadata: {},
+            status: Status.RequiresPaymentMethod,
+        });
     } catch (err) {
         if (err instanceof models.SDKError) {
             console.error(err); // handle exception
@@ -140,15 +152,21 @@ You can override the default server globally by passing a server index to the `s
 #### Example
 
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay({
         serverIdx: 0,
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.paymentIntents.findAll();
+    const res = await sdk.paymentIntents.create({
+        amount: 5000,
+        checkoutSessionId: "cs_1abc2def3ghi",
+        customerId: "cus_1abc2def3ghi",
+        metadata: {},
+        status: Status.RequiresPaymentMethod,
+    });
 
     if (res.statusCode == 200) {
         // handle response
@@ -164,15 +182,21 @@ run();
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay({
         serverURL: "https://api.kohortpay.com",
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.paymentIntents.findAll();
+    const res = await sdk.paymentIntents.create({
+        amount: 5000,
+        checkoutSessionId: "cs_1abc2def3ghi",
+        customerId: "cus_1abc2def3ghi",
+        metadata: {},
+        status: Status.RequiresPaymentMethod,
+    });
 
     if (res.statusCode == 200) {
         // handle response
@@ -216,14 +240,20 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { KohortPay } from "kohortpay-node";
+import { KohortPay, Status } from "kohortpay-node";
 
 async function run() {
     const sdk = new KohortPay({
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const res = await sdk.paymentIntents.findAll();
+    const res = await sdk.paymentIntents.create({
+        amount: 5000,
+        checkoutSessionId: "cs_1abc2def3ghi",
+        customerId: "cus_1abc2def3ghi",
+        metadata: {},
+        status: Status.RequiresPaymentMethod,
+    });
 
     if (res.statusCode == 200) {
         // handle response
@@ -244,7 +274,7 @@ async function run() {
     const sdk = new KohortPay();
     const id: string = "string";
     const operationSecurity: CancelPaymentIntentSecurity = {
-        bearer: "",
+        bearer: "<YOUR_BEARER_TOKEN_HERE>",
     };
 
     const res = await sdk.paymentIntents.cancel(operationSecurity, id);

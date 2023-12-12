@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: 9f87dc911ffff2e713812e38e86254fe
   docVersion: 0.1.0
-  speakeasyVersion: 1.125.2
-  generationVersion: 2.210.6
+  speakeasyVersion: 1.126.0
+  generationVersion: 2.213.3
 generation:
   comments: {}
   sdkClassName: kohortPay
@@ -13,15 +13,15 @@ generation:
     optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.4
+    core: 3.3.0
     errors: 2.81.8
     flattening: 2.81.1
-    globalSecurity: 2.82.0
+    globalSecurity: 2.82.1
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
     nameOverrides: 2.81.1
 typescript:
-  version: 0.1.7
+  version: 0.2.0
   author: kohortpay-sdk
   clientServerStatusCodesAsErrors: false
   flattenGlobalSecurity: true
@@ -40,3 +40,4 @@ typescript:
   packageName: kohortpay-node
   published: true
   repoSubDirectory: .
+  templateVersion: v1

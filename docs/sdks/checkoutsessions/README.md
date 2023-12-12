@@ -3,50 +3,10 @@
 
 ### Available Operations
 
-* [findAll](#findall) - Retrieve all checkout sessions for the current organization and livemode.
 * [create](#create) - Create a new checkout session.
+* [findAll](#findall) - Retrieve all checkout sessions for the current organization and livemode.
 * [findOne](#findone) - Retrieve a checkout session by ID for the current organization and livemode.
 * [expire](#expire) - Expire a checkout session by ID for the current organization and livemode.
-
-## findAll
-
-Retrieve all checkout sessions for the current organization and livemode.
-
-### Example Usage
-
-```typescript
-import { KohortPay } from "kohortpay-node";
-
-async function run() {
-  const sdk = new KohortPay({
-    bearer: "",
-  });
-
-  const res = await sdk.checkoutSessions.findAll();
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[models.FindAllCheckoutSessionsResponse](../../models/findallcheckoutsessionsresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
 
 ## create
 
@@ -59,7 +19,7 @@ import { KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
   const res = await sdk.checkoutSessions.create({
@@ -110,6 +70,46 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 400-600         | */*             |
 
+## findAll
+
+Retrieve all checkout sessions for the current organization and livemode.
+
+### Example Usage
+
+```typescript
+import { KohortPay } from "kohortpay-node";
+
+async function run() {
+  const sdk = new KohortPay({
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  });
+
+  const res = await sdk.checkoutSessions.findAll();
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[models.FindAllCheckoutSessionsResponse](../../models/findallcheckoutsessionsresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 400-600         | */*             |
+
 ## findOne
 
 Retrieve a checkout session by ID for the current organization and livemode.
@@ -121,7 +121,7 @@ import { FindOneCheckoutSessionRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
@@ -163,7 +163,7 @@ import { ExpireCheckoutSessionRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
   const sdk = new KohortPay({
-    bearer: "",
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
 const id: string = "string";
 
