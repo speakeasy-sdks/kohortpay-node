@@ -70,7 +70,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| models.SDKError | 4xx-5xx         | */*             |
 
 ## findAll
 
@@ -110,7 +110,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| models.SDKError | 4xx-5xx         | */*             |
 
 ## findOne
 
@@ -152,7 +152,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| models.SDKError | 4xx-5xx         | */*             |
 
 ## updateCustomer
 
@@ -198,7 +198,7 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| models.SDKError | 4xx-5xx         | */*             |
 
 ## delete
 
@@ -240,4 +240,4 @@ run();
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| models.SDKError | 400-600         | */*             |
+| models.SDKError | 4xx-5xx         | */*             |
