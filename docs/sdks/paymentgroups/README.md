@@ -111,7 +111,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.paymentGroups.findOne(id);
 
@@ -153,7 +153,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 const updatePaymentGroupDto: UpdatePaymentGroupDto = {
   metadata: {},
 };
@@ -199,7 +199,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.paymentGroups.getParticipants(id);
 
@@ -241,7 +241,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.paymentGroups.cancel(id);
 
@@ -283,7 +283,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.paymentGroups.expire(id);
 
@@ -325,7 +325,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 const validatePaymentGroupDto: ValidatePaymentGroupDto = {
   customerEmail: "customer@gmail.com",
 };

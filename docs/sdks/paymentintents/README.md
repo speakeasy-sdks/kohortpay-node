@@ -108,7 +108,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.paymentIntents.findOne(id);
 
@@ -148,7 +148,7 @@ import { CancelPaymentIntentRequest, CancelPaymentIntentSecurity, KohortPay } fr
 
 async function run() {
   const sdk = new KohortPay();
-const id: string = "string";
+const id: string = "<value>";
 const operationSecurity: CancelPaymentIntentSecurity = {
   bearer: "<YOUR_BEARER_TOKEN_HERE>",
 };

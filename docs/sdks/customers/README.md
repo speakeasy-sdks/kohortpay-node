@@ -125,7 +125,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.customers.findOne(id);
 
@@ -167,7 +167,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 const updateCustomerDto: UpdateCustomerDto = {
   deletedAt: new Date("2021-07-22T00:00:00.000Z"),
 };
@@ -213,7 +213,7 @@ async function run() {
   const sdk = new KohortPay({
     bearer: "<YOUR_BEARER_TOKEN_HERE>",
   });
-const id: string = "string";
+const id: string = "<value>";
 
   const res = await sdk.customers.delete(id);
 
