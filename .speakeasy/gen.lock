@@ -4,19 +4,19 @@ management:
   docChecksum: 9f87dc911ffff2e713812e38e86254fe
   docVersion: 0.1.0
   speakeasyVersion: internal
-  generationVersion: 2.258.0
-  releaseVersion: 0.2.3
-  configChecksum: edb21dc04ff05ee48e5c309e6e43b9ea
+  generationVersion: 2.272.4
+  releaseVersion: 0.2.4
+  configChecksum: 1cbbe99e437b5137720055508371d140
   repoURL: https://github.com/kohortpay/kohortpay-node.git
   repoSubDirectory: .
   installationURL: https://github.com/kohortpay/kohortpay-node
   published: true
 features:
   typescript:
-    core: 3.4.7
+    core: 3.4.8
     errors: 2.81.8
     flattening: 2.81.1
-    globalSecurity: 2.82.2
+    globalSecurity: 2.82.3
     globalServerURLs: 2.82.1
     methodSecurity: 2.82.0
     nameOverrides: 2.81.1
