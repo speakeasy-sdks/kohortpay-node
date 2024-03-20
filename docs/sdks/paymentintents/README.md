@@ -144,16 +144,15 @@ Cancel a Payment Intent by ID
 ### Example Usage
 
 ```typescript
-import { CancelPaymentIntentRequest, CancelPaymentIntentSecurity, KohortPay } from "kohortpay-node";
+import { CancelPaymentIntentRequest, KohortPay } from "kohortpay-node";
 
 async function run() {
-  const sdk = new KohortPay();
+  const sdk = new KohortPay({
+    bearer: "<YOUR_BEARER_TOKEN_HERE>",
+  });
 const id: string = "<value>";
-const operationSecurity: CancelPaymentIntentSecurity = {
-  bearer: "<YOUR_BEARER_TOKEN_HERE>",
-};
 
-  const res = await sdk.paymentIntents.cancel(operationSecurity, id);
+  const res = await sdk.paymentIntents.cancel(id);
 
   if (res.statusCode == 200) {
     // handle response
@@ -165,11 +164,10 @@ run();
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `security`                                                                        | [models.CancelPaymentIntentSecurity](../../models/cancelpaymentintentsecurity.md) | :heavy_check_mark:                                                                | The security requirements to use for the request.                                 |
-| `id`                                                                              | *string*                                                                          | :heavy_check_mark:                                                                | ID of the Payment Intent to cancel                                                |
-| `config`                                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                      | :heavy_minus_sign:                                                                | Available config options for making requests.                                     |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `id`                                                         | *string*                                                     | :heavy_check_mark:                                           | ID of the Payment Intent to cancel                           |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response

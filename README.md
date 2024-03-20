@@ -263,30 +263,6 @@ async function run() {
 run();
 
 ```
-
-### Per-Operation Security Schemes
-
-Some operations in this SDK require the security scheme to be specified at the request level. For example:
-```typescript
-import { CancelPaymentIntentRequest, CancelPaymentIntentSecurity, KohortPay } from "kohortpay-node";
-
-async function run() {
-    const sdk = new KohortPay();
-    const id: string = "<value>";
-    const operationSecurity: CancelPaymentIntentSecurity = {
-        bearer: "<YOUR_BEARER_TOKEN_HERE>",
-    };
-
-    const res = await sdk.paymentIntents.cancel(operationSecurity, id);
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-}
-
-run();
-
-```
 <!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

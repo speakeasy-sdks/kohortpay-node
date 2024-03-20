@@ -5,18 +5,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../internal/utils";
 import { AxiosResponse } from "axios";
 
-export class CancelPaymentIntentSecurity extends SpeakeasyBase {
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    bearer?: string;
-
-    @SpeakeasyMetadata({
-        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-    })
-    bearer1?: string;
-}
-
 export class CancelPaymentIntentRequest extends SpeakeasyBase {
     /**
      * ID of the Payment Intent to cancel
